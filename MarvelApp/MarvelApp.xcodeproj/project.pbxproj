@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,8 @@
 		C56E70BC2687F21D00496EF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56E70BA2687F21D00496EF7 /* LaunchScreen.storyboard */; };
 		C56E70C72687F21D00496EF7 /* MarvelAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70C62687F21D00496EF7 /* MarvelAppTests.swift */; };
 		C56E70D22687F21D00496EF7 /* MarvelAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70D12687F21D00496EF7 /* MarvelAppUITests.swift */; };
+		C56E70E12687F32500496EF7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C56E70E02687F32500496EF7 /* Alamofire */; };
+		C56E70E42687F3B100496EF7 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = C56E70E32687F3B100496EF7 /* Moya */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C56E70E42687F3B100496EF7 /* Moya in Frameworks */,
+				C56E70E12687F32500496EF7 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +148,10 @@
 			dependencies = (
 			);
 			name = MarvelApp;
+			packageProductDependencies = (
+				C56E70E02687F32500496EF7 /* Alamofire */,
+				C56E70E32687F3B100496EF7 /* Moya */,
+			);
 			productName = MarvelApp;
 			productReference = C56E70AC2687F21A00496EF7 /* MarvelApp.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +223,10 @@
 				Base,
 			);
 			mainGroup = C56E70A32687F21A00496EF7;
+			packageReferences = (
+				C56E70DF2687F32500496EF7 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C56E70E22687F3B100496EF7 /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = C56E70AD2687F21A00496EF7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -593,6 +605,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C56E70DF2687F32500496EF7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.3;
+			};
+		};
+		C56E70E22687F3B100496EF7 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 14.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C56E70E02687F32500496EF7 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C56E70DF2687F32500496EF7 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		C56E70E32687F3B100496EF7 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C56E70E22687F3B100496EF7 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C56E70A42687F21A00496EF7 /* Project object */;
 }
