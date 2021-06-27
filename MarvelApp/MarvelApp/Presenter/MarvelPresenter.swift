@@ -29,7 +29,14 @@ class MarvelPresenter: AnyPresenter {
         case .success(let response):
             view?.update(with: response)
         case .failure(let error):
-            view?.update(with: error)
+            switch error {
+            case MarvelError.invalidFormat:
+                view?.update(with: "Couldn't decode JSON")
+            case MarvelError.networkError:
+                view?.update(with: "Couldn't fetch data")
+            default:
+                view?.update(with: "Unknown error")
+            }
         }
     }
 }

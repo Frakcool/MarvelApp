@@ -35,10 +35,8 @@ class MarvelInteractor: AnyInteractor {
             switch result {
             case let .success(response):
                 self.presenter?.interactorDidFetchMarvelResponse(with: .success(response))
-                break
             case let .failure(error):
                 self.presenter?.interactorDidFetchMarvelResponse(with: .failure(error))
-                break
             }
         }
     }

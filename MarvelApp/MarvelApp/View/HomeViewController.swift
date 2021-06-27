@@ -11,7 +11,7 @@ protocol AnyView {
     var presenter: AnyPresenter? { get set }
 
     func update(with characters: MarvelResponse)
-    func update(with error: Error)
+    func update(with error: String)
 }
 
 class HomeViewController: UIViewController {
@@ -29,10 +29,21 @@ class HomeViewController: UIViewController {
         return table
     }()
 
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+
+        label.textAlignment = .center
+        label.isHidden = true
+
+        return label
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .white
+
+        view.addSubview(errorLabel)
         view.addSubview(tableView)
 
         tableView.delegate = self
@@ -43,8 +54,13 @@ class HomeViewController: UIViewController {
         super.viewDidLayoutSubviews()
 
         tableView.frame = view.bounds
+
+        errorLabel.center = view.center
+        errorLabel.frame = view.bounds
     }
 }
+
+// MARK: TableView
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,6 +91,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: VIPER
+
 extension HomeViewController: AnyView {
     func update(with response: MarvelResponse) {
         DispatchQueue.main.async {
@@ -84,12 +102,19 @@ extension HomeViewController: AnyView {
                 self.limit = response.data?.limit ?? 20
 
                 self.tableView.isHidden = false
+                self.errorLabel.isHidden = true
                 self.tableView.reloadData()
             }
         }
     }
 
-    func update(with error: Error) {
-        
+    func update(with error: String) {
+        DispatchQueue.main.async {
+            self.characters = []
+            self.errorLabel.text = error
+            self.errorLabel.textColor = .black
+            self.tableView.isHidden = true
+            self.errorLabel.isHidden = false
+        }
     }
 }
