@@ -48,7 +48,7 @@ extension Endpoints: TargetType {
     var task: Task {
         let infoDict = Bundle.main.infoDictionary
         let apiKey = infoDict?["Public_Key"] as? String ?? ""
-        let ts = "1"
+        let ts = String(describing: Date.init().timeIntervalSince1970)
         let privateKey = infoDict?["Private_Key"] as? String ?? ""
         let hash = (ts + privateKey + apiKey).md5Ciphered
 
@@ -57,7 +57,7 @@ extension Endpoints: TargetType {
                                          "hash" : hash]
 
         switch self {
-        case .listNextCharacters(let limit, let offset):
+        case .listNextCharacters(let offset, let limit):
             parameters["offset"] = offset
             parameters["limit"] = limit
         default:

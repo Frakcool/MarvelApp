@@ -17,6 +17,8 @@ protocol AnyView {
 class HomeViewController: UIViewController {
     var presenter: AnyPresenter?
     var characters: [Character] = []
+    var offset: Int = 0
+    var limit: Int = 20
 
     private let tableView: UITableView = {
         let table = UITableView()
@@ -45,10 +47,6 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characters.count
-    }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "characterCell", for: indexPath)
         cell.textLabel?.text = characters[indexPath.row].name
@@ -56,8 +54,18 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return characters.count
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == characters.count - 5 {
+            presenter?.interactor?.getNextCharacters(offset, limit)
+        }
     }
 }
 
@@ -65,7 +73,10 @@ extension HomeViewController: AnyView {
     func update(with response: MarvelResponse) {
         DispatchQueue.main.async {
             if let charactersArray = response.data?.results {
-                self.characters = charactersArray
+                self.characters.append(contentsOf: charactersArray)
+                self.offset = self.characters.count
+                self.limit = response.data?.limit ?? 20
+
                 self.tableView.isHidden = false
                 self.tableView.reloadData()
             }
