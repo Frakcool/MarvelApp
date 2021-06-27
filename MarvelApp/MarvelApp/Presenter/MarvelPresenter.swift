@@ -12,7 +12,7 @@ protocol AnyPresenter {
     var interactor: AnyInteractor? { get set }
     var view: AnyView? { get set }
 
-    func interactorDidFetchCharacters(with result: Result<[Character], Error>)
+    func interactorDidFetchMarvelResponse(with result: Result<MarvelResponse, Error>)
 }
 
 class MarvelPresenter: AnyPresenter {
@@ -24,7 +24,12 @@ class MarvelPresenter: AnyPresenter {
         }
     }
 
-    func interactorDidFetchCharacters(with result: Result<[Character], Error>) {
-        
+    func interactorDidFetchMarvelResponse(with result: Result<MarvelResponse, Error>) {
+        switch result {
+        case .success(let response):
+            view?.update(with: response)
+        case .failure(let error):
+            view?.update(with: error)
+        }
     }
 }

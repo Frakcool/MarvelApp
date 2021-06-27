@@ -20,15 +20,10 @@ class MarvelInteractor: AnyInteractor {
         NetworkManager.shared.fetchCharacters { result in
             switch result {
             case let .success(response):
-                print(response.data?.limit)
-                print(response.data?.offset)
-                if let results = response.data?.results {
-                    for character in results {
-                        print(character.name)
-                    }
-                }
+                self.presenter?.interactorDidFetchMarvelResponse(with: .success(response))
                 break
             case let .failure(error):
+                self.presenter?.interactorDidFetchMarvelResponse(with: .failure(error))
                 break
             }
         }

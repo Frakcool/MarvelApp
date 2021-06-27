@@ -8,6 +8,11 @@
 import Foundation
 import Moya
 
+enum MarvelError: Error {
+    case networkError
+    case invalidFormat
+}
+
 final class NetworkManager {
     static let shared = NetworkManager()
     private let provider = MoyaProvider<Endpoints>()
@@ -21,13 +26,12 @@ final class NetworkManager {
                     let marvelResponse = try filteredResponse.map(MarvelResponse.self)
                     completion(.success(marvelResponse))
                 } catch {
-                    print("Couldn't decode response from: \(response)")
-                    print(error)
-                    completion(.failure(error))
+                    print("Couldn't decode response ", error)
+                    completion(.failure(MarvelError.invalidFormat))
                 }
             case let .failure(error):
-                print("Couldn't fetch data")
-                completion(.failure(error))
+                print("Couldn't fetch data ", error)
+                completion(.failure(MarvelError.networkError))
             }
         }
     }
