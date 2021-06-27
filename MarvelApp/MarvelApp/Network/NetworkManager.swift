@@ -17,12 +17,6 @@ final class NetworkManager {
     static let shared = NetworkManager()
     var provider = MoyaProvider<Endpoints>()
 
-    init() {
-        let networkConfiguration = NetworkLoggerPlugin.Configuration(logOptions: .formatRequestAscURL)
-        let networkLogger = NetworkLoggerPlugin(configuration: networkConfiguration)
-        provider = MoyaProvider<Endpoints>(plugins: [networkLogger])
-    }
-
     func fetchCharacters(_ completion: @escaping (Result<MarvelResponse, Error>) -> Void) {
         provider.request(.listCharacters) { result in
             switch result {
