@@ -17,6 +17,20 @@ class MarvelInteractor: AnyInteractor {
     var presenter: AnyPresenter?
 
     func getCharacters() {
-        
+        NetworkManager.shared.fetchCharacters { result in
+            switch result {
+            case let .success(response):
+                print(response.data?.limit)
+                print(response.data?.offset)
+                if let results = response.data?.results {
+                    for character in results {
+                        print(character.name)
+                    }
+                }
+                break
+            case let .failure(error):
+                break
+            }
+        }
     }
 }

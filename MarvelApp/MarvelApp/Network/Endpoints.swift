@@ -7,6 +7,7 @@
 
 import Foundation
 import Moya
+import CryptoKit
 
 enum Endpoints {
     case listCharacters
@@ -45,14 +46,26 @@ extension Endpoints: TargetType {
     }
 
     var task: Task {
+        let infoDict = Bundle.main.infoDictionary
+        let apiKey = infoDict?["Public_Key"] as? String ?? ""
+        let ts = "1"
+        let privateKey = infoDict?["Private_Key"] as? String ?? ""
+        let hash = (ts + privateKey + apiKey).md5Ciphered
+
+        var parameters: [String: Any] = ["apikey" : apiKey,
+                                         "ts" : ts,
+                                         "hash" : hash]
+
         switch self {
         case .listNextCharacters(let limit, let offset):
-            return .requestParameters(parameters: ["offset": offset,
-                                                   "limit": limit],
-                                      encoding: URLEncoding.queryString)
+            parameters["offset"] = offset
+            parameters["limit"] = limit
         default:
-            return .requestPlain
+            break
         }
+
+        return .requestParameters(parameters: parameters,
+                                  encoding: URLEncoding.queryString)
     }
 
     var headers: [String : String]? {
@@ -64,5 +77,13 @@ extension Endpoints: TargetType {
 private extension String {
     var utf8Encoded: Data {
         return data(using: .utf8)!
+    }
+
+    var md5Ciphered: String {
+        let digest = Insecure.MD5.hash(data: self.data(using: .utf8) ?? Data())
+
+        return digest.map {
+            String(format: "%02hhx", $0)
+        }.joined()
     }
 }

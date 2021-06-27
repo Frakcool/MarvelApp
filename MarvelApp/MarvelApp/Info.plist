@@ -8,6 +8,11 @@
 	<string>74d8ec5ae0075984627c00c91d47fce4</string>
 	<key>Private_Key</key>
 	<string>7e9b99a67a4c65c6d66c3ef4f5a5aeeb90e03bf3</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

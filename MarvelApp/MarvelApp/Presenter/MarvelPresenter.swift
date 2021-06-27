@@ -18,10 +18,10 @@ protocol AnyPresenter {
 class MarvelPresenter: AnyPresenter {
     var router: AnyRouter?
     var interactor: AnyInteractor?
-    var view: AnyView?
-
-    init() {
-        interactor?.getCharacters()
+    var view: AnyView? {
+        didSet {
+            interactor?.getCharacters()
+        }
     }
 
     func interactorDidFetchCharacters(with result: Result<[Character], Error>) {
