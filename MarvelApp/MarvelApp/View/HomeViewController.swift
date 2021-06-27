@@ -59,6 +59,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Selected row ", indexPath.row, " character: ", characters[indexPath.row])
+        let characterDetailsVC = CharacterDetailViewController()
+        characterDetailsVC.character = characters[indexPath.row]
+
+        self.navigationController?.pushViewController(characterDetailsVC, animated: true)
+
         tableView.cellForRow(at: indexPath)?.isSelected = false
     }
 
@@ -84,6 +90,6 @@ extension HomeViewController: AnyView {
     }
 
     func update(with error: Error) {
-
+        
     }
 }

@@ -21,8 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let charactersRouter = MarvelRouter.start()
         let initialVC = charactersRouter.entry
 
+        let navigationController = UINavigationController(rootViewController: initialVC!)
+
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = initialVC
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
         self.window = window
     }

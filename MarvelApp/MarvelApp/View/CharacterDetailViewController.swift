@@ -18,18 +18,65 @@ enum ImageSizes: String {
 }
 
 class CharacterDetailViewController: UIViewController {
-    var characterImage: UIImageView?
-    var characterName: UILabel?
-    var characterDescription: UILabel?
-    var copyRight: UILabel?
+    var characterImage: UIImageView!
+    var nameLabel: UILabel!
+    var descriptionLabel: UILabel!
+    var copyrightLabel: UILabel!
+
+    var character: Character!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .white
         addComponents()
     }
 
     private func addComponents() {
-        
+        characterImage = UIImageView(image: UIImage(systemName: "lasso"))
+
+        nameLabel = UILabel()
+        nameLabel.text = character.name
+
+        if let characterDescription = character.description {
+            let desc = characterDescription.isEmpty ? "<No description available>" : characterDescription
+            descriptionLabel = UILabel()
+            descriptionLabel.text = desc
+            descriptionLabel.numberOfLines = 0
+            descriptionLabel.lineBreakMode = .byWordWrapping
+            descriptionLabel.textAlignment = .justified
+        }
+
+        copyrightLabel = UILabel()
+        copyrightLabel.text = "Copyright"
+
+        view.addSubview(characterImage)
+        view.addSubview(nameLabel)
+        view.addSubview(descriptionLabel)
+        view.addSubview(copyrightLabel)
+
+        characterImage.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        copyrightLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        let layout = view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            characterImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            characterImage.heightAnchor.constraint(equalToConstant: 180), // Amazing
+            characterImage.widthAnchor.constraint(equalToConstant: 180), // Amazing
+            characterImage.topAnchor.constraint(equalTo: layout.topAnchor, constant: 20),
+
+            nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nameLabel.topAnchor.constraint(equalTo: characterImage.bottomAnchor, constant: 20),
+
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 20),
+
+            copyrightLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            copyrightLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            copyrightLabel.bottomAnchor.constraint(equalTo: layout.bottomAnchor, constant: -20)
+        ])
     }
 }
