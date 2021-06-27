@@ -9,14 +9,17 @@
 /* Begin PBXBuildFile section */
 		C56E70B02687F21A00496EF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70AF2687F21A00496EF7 /* AppDelegate.swift */; };
 		C56E70B22687F21A00496EF7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70B12687F21A00496EF7 /* SceneDelegate.swift */; };
-		C56E70B42687F21A00496EF7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70B32687F21A00496EF7 /* ViewController.swift */; };
-		C56E70B72687F21A00496EF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56E70B52687F21A00496EF7 /* Main.storyboard */; };
+		C56E70B42687F21A00496EF7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70B32687F21A00496EF7 /* HomeViewController.swift */; };
 		C56E70B92687F21D00496EF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C56E70B82687F21D00496EF7 /* Assets.xcassets */; };
 		C56E70BC2687F21D00496EF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56E70BA2687F21D00496EF7 /* LaunchScreen.storyboard */; };
 		C56E70C72687F21D00496EF7 /* MarvelAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70C62687F21D00496EF7 /* MarvelAppTests.swift */; };
 		C56E70D22687F21D00496EF7 /* MarvelAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70D12687F21D00496EF7 /* MarvelAppUITests.swift */; };
 		C56E70E12687F32500496EF7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C56E70E02687F32500496EF7 /* Alamofire */; };
 		C56E70E42687F3B100496EF7 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = C56E70E32687F3B100496EF7 /* Moya */; };
+		C56E70EB2687F74A00496EF7 /* MarvelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70EA2687F74A00496EF7 /* MarvelRouter.swift */; };
+		C56E70ED2688016600496EF7 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70EC2688016600496EF7 /* Character.swift */; };
+		C56E70EF2688094D00496EF7 /* MarvelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70EE2688094D00496EF7 /* MarvelPresenter.swift */; };
+		C56E70F126880A4600496EF7 /* MarvelInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70F026880A4600496EF7 /* MarvelInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +43,7 @@
 		C56E70AC2687F21A00496EF7 /* MarvelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56E70AF2687F21A00496EF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C56E70B12687F21A00496EF7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C56E70B32687F21A00496EF7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C56E70B62687F21A00496EF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C56E70B32687F21A00496EF7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C56E70B82687F21D00496EF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C56E70BB2687F21D00496EF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C56E70BD2687F21D00496EF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +53,10 @@
 		C56E70CD2687F21D00496EF7 /* MarvelAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56E70D12687F21D00496EF7 /* MarvelAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAppUITests.swift; sourceTree = "<group>"; };
 		C56E70D32687F21D00496EF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C56E70EA2687F74A00496EF7 /* MarvelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelRouter.swift; sourceTree = "<group>"; };
+		C56E70EC2688016600496EF7 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		C56E70EE2688094D00496EF7 /* MarvelPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelPresenter.swift; sourceTree = "<group>"; };
+		C56E70F026880A4600496EF7 /* MarvelInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +109,13 @@
 		C56E70AE2687F21A00496EF7 /* MarvelApp */ = {
 			isa = PBXGroup;
 			children = (
+				C56E70E92687F4AE00496EF7 /* View */,
+				C56E70E82687F4AC00496EF7 /* Interactor */,
+				C56E70E72687F4AA00496EF7 /* Presenter */,
+				C56E70E62687F4A900496EF7 /* Entity */,
+				C56E70E52687F4A600496EF7 /* Router */,
 				C56E70AF2687F21A00496EF7 /* AppDelegate.swift */,
 				C56E70B12687F21A00496EF7 /* SceneDelegate.swift */,
-				C56E70B32687F21A00496EF7 /* ViewController.swift */,
-				C56E70B52687F21A00496EF7 /* Main.storyboard */,
 				C56E70B82687F21D00496EF7 /* Assets.xcassets */,
 				C56E70BA2687F21D00496EF7 /* LaunchScreen.storyboard */,
 				C56E70BD2687F21D00496EF7 /* Info.plist */,
@@ -130,6 +139,46 @@
 				C56E70D32687F21D00496EF7 /* Info.plist */,
 			);
 			path = MarvelAppUITests;
+			sourceTree = "<group>";
+		};
+		C56E70E52687F4A600496EF7 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				C56E70EA2687F74A00496EF7 /* MarvelRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		C56E70E62687F4A900496EF7 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				C56E70EC2688016600496EF7 /* Character.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		C56E70E72687F4AA00496EF7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				C56E70EE2688094D00496EF7 /* MarvelPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C56E70E82687F4AC00496EF7 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				C56E70F026880A4600496EF7 /* MarvelInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		C56E70E92687F4AE00496EF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C56E70B32687F21A00496EF7 /* HomeViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,7 +294,6 @@
 			files = (
 				C56E70BC2687F21D00496EF7 /* LaunchScreen.storyboard in Resources */,
 				C56E70B92687F21D00496EF7 /* Assets.xcassets in Resources */,
-				C56E70B72687F21A00496EF7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +318,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C56E70B42687F21A00496EF7 /* ViewController.swift in Sources */,
+				C56E70B42687F21A00496EF7 /* HomeViewController.swift in Sources */,
+				C56E70EF2688094D00496EF7 /* MarvelPresenter.swift in Sources */,
+				C56E70EB2687F74A00496EF7 /* MarvelRouter.swift in Sources */,
+				C56E70F126880A4600496EF7 /* MarvelInteractor.swift in Sources */,
+				C56E70ED2688016600496EF7 /* Character.swift in Sources */,
 				C56E70B02687F21A00496EF7 /* AppDelegate.swift in Sources */,
 				C56E70B22687F21A00496EF7 /* SceneDelegate.swift in Sources */,
 			);
@@ -308,14 +360,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C56E70B52687F21A00496EF7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C56E70B62687F21A00496EF7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C56E70BA2687F21D00496EF7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
