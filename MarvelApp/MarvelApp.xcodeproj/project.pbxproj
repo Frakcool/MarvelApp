@@ -20,6 +20,8 @@
 		C56E70ED2688016600496EF7 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70EC2688016600496EF7 /* Character.swift */; };
 		C56E70EF2688094D00496EF7 /* MarvelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70EE2688094D00496EF7 /* MarvelPresenter.swift */; };
 		C56E70F126880A4600496EF7 /* MarvelInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70F026880A4600496EF7 /* MarvelInteractor.swift */; };
+		C56E70FA2688215000496EF7 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70F82688215000496EF7 /* Endpoints.swift */; };
+		C56E70FB2688215000496EF7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70F92688215000496EF7 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		C56E70EC2688016600496EF7 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		C56E70EE2688094D00496EF7 /* MarvelPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelPresenter.swift; sourceTree = "<group>"; };
 		C56E70F026880A4600496EF7 /* MarvelInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelInteractor.swift; sourceTree = "<group>"; };
+		C56E70F82688215000496EF7 /* Endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		C56E70F92688215000496EF7 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 		C56E70AE2687F21A00496EF7 /* MarvelApp */ = {
 			isa = PBXGroup;
 			children = (
+				C56E70F72688215000496EF7 /* Network */,
 				C56E70E92687F4AE00496EF7 /* View */,
 				C56E70E82687F4AC00496EF7 /* Interactor */,
 				C56E70E72687F4AA00496EF7 /* Presenter */,
@@ -179,6 +184,15 @@
 				C56E70B32687F21A00496EF7 /* HomeViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C56E70F72688215000496EF7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C56E70F82688215000496EF7 /* Endpoints.swift */,
+				C56E70F92688215000496EF7 /* NetworkManager.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,12 +332,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C56E70FB2688215000496EF7 /* NetworkManager.swift in Sources */,
 				C56E70B42687F21A00496EF7 /* HomeViewController.swift in Sources */,
 				C56E70EF2688094D00496EF7 /* MarvelPresenter.swift in Sources */,
 				C56E70EB2687F74A00496EF7 /* MarvelRouter.swift in Sources */,
 				C56E70F126880A4600496EF7 /* MarvelInteractor.swift in Sources */,
 				C56E70ED2688016600496EF7 /* Character.swift in Sources */,
 				C56E70B02687F21A00496EF7 /* AppDelegate.swift in Sources */,
+				C56E70FA2688215000496EF7 /* Endpoints.swift in Sources */,
 				C56E70B22687F21A00496EF7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
