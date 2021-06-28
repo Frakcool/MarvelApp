@@ -12,9 +12,10 @@ protocol AnyInteractor {
 
     func getCharacters()
     func getNextCharacters(_ offset: Int, _ limit: Int)
+    func getCharacterThumbnail(_ urlString: String)
 }
 
-class MarvelInteractor: AnyInteractor {
+class HomeInteractor: AnyInteractor {
     var presenter: AnyPresenter?
 
     func getCharacters() {
@@ -39,5 +40,9 @@ class MarvelInteractor: AnyInteractor {
                 self.presenter?.interactorDidFetchMarvelResponse(with: .failure(error))
             }
         }
+    }
+
+    func getCharacterThumbnail(_ urlString: String) {
+        
     }
 }

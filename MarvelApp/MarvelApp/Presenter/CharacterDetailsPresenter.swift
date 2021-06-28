@@ -1,30 +1,30 @@
 //
-//  MarvelPresenter.swift
+//  CharacterDetailsPresenter.swift
 //  MarvelApp
 //
-//  Created by Jesús Sánchez on 26/06/21.
+//  Created by Jesús Sánchez on 27/06/21.
 //
 
-import Foundation
+import UIKit
 
-protocol AnyPresenter {
-    var router: AnyRouter? { get set }
-    var interactor: AnyInteractor? { get set }
-    var view: AnyView? { get set }
+class CharacterDetailsPresenter: AnyPresenter {
+    var imageURL: String?
 
-    func interactorDidFetchMarvelResponse(with result: Result<MarvelResponse, Error>)
-}
-
-class MarvelPresenter: AnyPresenter {
     var router: AnyRouter?
     var interactor: AnyInteractor?
     var view: AnyView? {
         didSet {
-            interactor?.getCharacters()
+            if let urlString = imageURL {
+                interactor?.getCharacterThumbnail(urlString)
+            }
         }
     }
 
     func interactorDidFetchMarvelResponse(with result: Result<MarvelResponse, Error>) {
+        
+    }
+
+    func interactorDidFetchMarvelImage(with result: Result<UIImage, Error>) {
         switch result {
         case .success(let response):
             view?.update(with: response)

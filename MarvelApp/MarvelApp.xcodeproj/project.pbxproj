@@ -16,13 +16,16 @@
 		C56E70D22687F21D00496EF7 /* MarvelAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70D12687F21D00496EF7 /* MarvelAppUITests.swift */; };
 		C56E70E12687F32500496EF7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C56E70E02687F32500496EF7 /* Alamofire */; };
 		C56E70E42687F3B100496EF7 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = C56E70E32687F3B100496EF7 /* Moya */; };
-		C56E70EB2687F74A00496EF7 /* MarvelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70EA2687F74A00496EF7 /* MarvelRouter.swift */; };
+		C56E70EB2687F74A00496EF7 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70EA2687F74A00496EF7 /* HomeRouter.swift */; };
 		C56E70ED2688016600496EF7 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70EC2688016600496EF7 /* Character.swift */; };
-		C56E70EF2688094D00496EF7 /* MarvelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70EE2688094D00496EF7 /* MarvelPresenter.swift */; };
-		C56E70F126880A4600496EF7 /* MarvelInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70F026880A4600496EF7 /* MarvelInteractor.swift */; };
+		C56E70EF2688094D00496EF7 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70EE2688094D00496EF7 /* HomePresenter.swift */; };
+		C56E70F126880A4600496EF7 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70F026880A4600496EF7 /* HomeInteractor.swift */; };
 		C56E70FA2688215000496EF7 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70F82688215000496EF7 /* Endpoints.swift */; };
 		C56E70FB2688215000496EF7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70F92688215000496EF7 /* NetworkManager.swift */; };
 		C56E70FD268913C800496EF7 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70FC268913C800496EF7 /* CharacterDetailViewController.swift */; };
+		C56E70FF26894C4F00496EF7 /* CharacterDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E70FE26894C4F00496EF7 /* CharacterDetailsRouter.swift */; };
+		C56E710126894D5E00496EF7 /* CharacterDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E710026894D5E00496EF7 /* CharacterDetailsPresenter.swift */; };
+		C56E710326894E9700496EF7 /* CharacterDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E710226894E9700496EF7 /* CharacterDetailsInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,13 +59,16 @@
 		C56E70CD2687F21D00496EF7 /* MarvelAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56E70D12687F21D00496EF7 /* MarvelAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAppUITests.swift; sourceTree = "<group>"; };
 		C56E70D32687F21D00496EF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C56E70EA2687F74A00496EF7 /* MarvelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelRouter.swift; sourceTree = "<group>"; };
+		C56E70EA2687F74A00496EF7 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		C56E70EC2688016600496EF7 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
-		C56E70EE2688094D00496EF7 /* MarvelPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelPresenter.swift; sourceTree = "<group>"; };
-		C56E70F026880A4600496EF7 /* MarvelInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelInteractor.swift; sourceTree = "<group>"; };
+		C56E70EE2688094D00496EF7 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		C56E70F026880A4600496EF7 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		C56E70F82688215000496EF7 /* Endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		C56E70F92688215000496EF7 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C56E70FC268913C800496EF7 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
+		C56E70FE26894C4F00496EF7 /* CharacterDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsRouter.swift; sourceTree = "<group>"; };
+		C56E710026894D5E00496EF7 /* CharacterDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsPresenter.swift; sourceTree = "<group>"; };
+		C56E710226894E9700496EF7 /* CharacterDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +157,8 @@
 		C56E70E52687F4A600496EF7 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				C56E70EA2687F74A00496EF7 /* MarvelRouter.swift */,
+				C56E70EA2687F74A00496EF7 /* HomeRouter.swift */,
+				C56E70FE26894C4F00496EF7 /* CharacterDetailsRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -167,7 +174,8 @@
 		C56E70E72687F4AA00496EF7 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				C56E70EE2688094D00496EF7 /* MarvelPresenter.swift */,
+				C56E70EE2688094D00496EF7 /* HomePresenter.swift */,
+				C56E710026894D5E00496EF7 /* CharacterDetailsPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -175,7 +183,8 @@
 		C56E70E82687F4AC00496EF7 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				C56E70F026880A4600496EF7 /* MarvelInteractor.swift */,
+				C56E70F026880A4600496EF7 /* HomeInteractor.swift */,
+				C56E710226894E9700496EF7 /* CharacterDetailsInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -336,15 +345,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C56E70FB2688215000496EF7 /* NetworkManager.swift in Sources */,
+				C56E710326894E9700496EF7 /* CharacterDetailsInteractor.swift in Sources */,
 				C56E70B42687F21A00496EF7 /* HomeViewController.swift in Sources */,
-				C56E70EF2688094D00496EF7 /* MarvelPresenter.swift in Sources */,
-				C56E70EB2687F74A00496EF7 /* MarvelRouter.swift in Sources */,
-				C56E70F126880A4600496EF7 /* MarvelInteractor.swift in Sources */,
+				C56E70EF2688094D00496EF7 /* HomePresenter.swift in Sources */,
+				C56E70EB2687F74A00496EF7 /* HomeRouter.swift in Sources */,
+				C56E70F126880A4600496EF7 /* HomeInteractor.swift in Sources */,
+				C56E710126894D5E00496EF7 /* CharacterDetailsPresenter.swift in Sources */,
 				C56E70FD268913C800496EF7 /* CharacterDetailViewController.swift in Sources */,
 				C56E70ED2688016600496EF7 /* Character.swift in Sources */,
 				C56E70B02687F21A00496EF7 /* AppDelegate.swift in Sources */,
 				C56E70FA2688215000496EF7 /* Endpoints.swift in Sources */,
 				C56E70B22687F21A00496EF7 /* SceneDelegate.swift in Sources */,
+				C56E70FF26894C4F00496EF7 /* CharacterDetailsRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

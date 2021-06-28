@@ -12,18 +12,18 @@ typealias EntryPoint = AnyView & UIViewController
 protocol AnyRouter {
     var entry: EntryPoint? { get }
 
-    static func start() -> AnyRouter
+    static func start(with imageURL: String?) -> AnyRouter
 }
 
-class MarvelRouter: AnyRouter {
+class HomeRouter: AnyRouter {
     var entry: EntryPoint?
 
-    static func start() -> AnyRouter {
-        let router = MarvelRouter()
+    static func start(with imageURL: String?) -> AnyRouter {
+        let router = HomeRouter()
 
         var view: AnyView = HomeViewController()
-        var presenter: AnyPresenter = MarvelPresenter()
-        var interactor: AnyInteractor = MarvelInteractor()
+        var presenter: AnyPresenter = HomePresenter()
+        var interactor: AnyInteractor = HomeInteractor()
 
         view.presenter = presenter
 

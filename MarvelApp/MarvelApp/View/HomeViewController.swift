@@ -12,6 +12,7 @@ protocol AnyView {
 
     func update(with characters: MarvelResponse)
     func update(with error: String)
+    func update(with image: UIImage)
 }
 
 class HomeViewController: UIViewController {
@@ -75,13 +76,24 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Selected row ", indexPath.row, " character: ", characters[indexPath.row])
-        let characterDetailsVC = CharacterDetailViewController()
+        let characterDetailsRouter = CharacterDetailsRouter.start(with: buildURL(for: indexPath.row))
+        guard let characterDetailsVC = characterDetailsRouter.entry as? CharacterDetailViewController else {
+            return
+        }
         characterDetailsVC.character = characters[indexPath.row]
 
         self.navigationController?.pushViewController(characterDetailsVC, animated: true)
 
         tableView.cellForRow(at: indexPath)?.isSelected = false
+    }
+
+    private func buildURL(for index: Int) -> String {
+        if let path = characters[index].thumbnail?.path,
+           let ext = characters[index].thumbnail?.type {
+            let size = ImageSizes.amazing.rawValue
+            return path + "/" + size + "." + ext
+        }
+        return ""
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -116,5 +128,9 @@ extension HomeViewController: AnyView {
             self.tableView.isHidden = true
             self.errorLabel.isHidden = false
         }
+    }
+
+    func update(with image: UIImage) {
+        
     }
 }

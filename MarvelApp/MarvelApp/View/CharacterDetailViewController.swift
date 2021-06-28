@@ -18,12 +18,14 @@ enum ImageSizes: String {
 }
 
 class CharacterDetailViewController: UIViewController {
-    var characterImage: UIImageView!
-    var nameLabel: UILabel!
-    var descriptionLabel: UILabel!
-    var copyrightLabel: UILabel!
+    var characterImage = UIImageView()
+    var nameLabel = UILabel()
+    var descriptionLabel = UILabel()
+    var copyrightLabel = UILabel()
 
     var character: Character!
+
+    var presenter: AnyPresenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,21 +35,16 @@ class CharacterDetailViewController: UIViewController {
     }
 
     private func addComponents() {
-        characterImage = UIImageView(image: UIImage(systemName: "lasso"))
-
-        nameLabel = UILabel()
         nameLabel.text = character.name
 
         if let characterDescription = character.description {
             let desc = characterDescription.isEmpty ? "<No description available>" : characterDescription
-            descriptionLabel = UILabel()
             descriptionLabel.text = desc
             descriptionLabel.numberOfLines = 0
             descriptionLabel.lineBreakMode = .byWordWrapping
             descriptionLabel.textAlignment = .justified
         }
 
-        copyrightLabel = UILabel()
         copyrightLabel.text = "Copyright"
 
         view.addSubview(characterImage)
@@ -78,5 +75,19 @@ class CharacterDetailViewController: UIViewController {
             copyrightLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             copyrightLabel.bottomAnchor.constraint(equalTo: layout.bottomAnchor, constant: -20)
         ])
+    }
+}
+
+extension CharacterDetailViewController: AnyView {
+    func update(with characters: MarvelResponse) {
+
+    }
+
+    func update(with error: String) {
+        print("Error")
+    }
+
+    func update(with image: UIImage) {
+        characterImage.image = image
     }
 }
