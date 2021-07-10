@@ -13,7 +13,10 @@ class HomeRouter: HomeRouterProtocol {
     var entry: EntryPoint?
 
     func pushToCharacterDetails(with character: Character, from view: UIViewController) {
-        print("Not yet implemented")
+        let detailsVC = CharacterDetailViewController()
+        CharacterDetailRouter.createCharacterDetailView(with: detailsVC, and: character)
+
+        view.navigationController?.pushViewController(detailsVC, animated: true)
     }
 
     static func start() -> HomeRouterProtocol {

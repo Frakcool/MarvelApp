@@ -11,7 +11,7 @@ class HomeViewController: UIViewController {
     var presenter: HomePresenterProtocol?
     var characters: [Character] = []
 
-    struct Constants {
+    private enum Constants {
         static let cellIdentifier: String = "characterCell"
         static let lastColumns = 5
     }
@@ -66,11 +66,11 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeViewProtocol {
     func showCharacters(with characters: [Character]) {
-        errorLabel.isHidden = true
-        tableView.isHidden = false
-
         self.characters = characters
         tableView.reloadData()
+
+        errorLabel.isHidden = true
+        tableView.isHidden = false
     }
 
     func showErrorMessage(with error: String) {
@@ -86,6 +86,7 @@ extension HomeViewController: HomeViewProtocol {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath)
+
         let character = characters[indexPath.row]
         cell.textLabel?.text = character.name
 

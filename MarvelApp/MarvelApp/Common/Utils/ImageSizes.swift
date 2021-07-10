@@ -5,7 +5,7 @@
 //  Created by Jesús Sánchez on 09/07/21.
 //
 
-import Foundation
+import UIKit
 
 // Currently using the Square aspect ratio: https://developer.marvel.com/documentation/images
 enum ImageSizes: Int, CaseIterable {
@@ -33,7 +33,7 @@ enum ImageSizes: Int, CaseIterable {
         }
     }
 
-    var width: Int {
+    var width: CGFloat {
         switch self {
         case .small:
             return 65
@@ -50,7 +50,7 @@ enum ImageSizes: Int, CaseIterable {
         }
     }
 
-    var height: Int {
+    var height: CGFloat {
         switch self {
         case .small:
             return 45

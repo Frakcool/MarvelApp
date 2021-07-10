@@ -19,7 +19,7 @@ class HomePresenter: HomePresenterProtocol {
     }
 
     func showCharacterDetail(of character: Character, from view: UIViewController) {
-        print("Not yet implemented")
+        router?.pushToCharacterDetails(with: character, from: view)
     }
 }
 
