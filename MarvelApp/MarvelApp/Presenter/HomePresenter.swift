@@ -1,50 +1,34 @@
 //
-//  MarvelPresenter.swift
+//  HomePresenter.swift
 //  MarvelApp
 //
-//  Created by Jesús Sánchez on 26/06/21.
+//  Created by Jesús Sánchez on 09/07/21.
 //
 
 import UIKit
 
-protocol AnyPresenter {
-    var router: AnyRouter? { get set }
-    var interactor: AnyInteractor? { get set }
-    var view: AnyView? { get set }
-    var imageURL: String? { get set }
+class HomePresenter: HomePresenterProtocol {
+    var interactor: HomeInputInteractorProtocol?
 
-    func interactorDidFetchMarvelResponse(with result: Result<MarvelResponse, Error>)
-    func interactorDidFetchMarvelImage(with result: Result<UIImage, Error>)
+    var view: HomeViewProtocol?
+
+    var router: HomeRouterProtocol?
+
+    func getNextCharacters(_ offset: Int) {
+        interactor?.getCharactersList(with: offset)
+    }
+
+    func showCharacterDetail(of character: Character, from view: UIViewController) {
+        print("Not yet implemented")
+    }
 }
 
-class HomePresenter: AnyPresenter {
-    var imageURL: String?
-
-    var router: AnyRouter?
-    var interactor: AnyInteractor?
-    var view: AnyView? {
-        didSet {
-            interactor?.getCharacters()
-        }
+extension HomePresenter: HomeOutputInteractorProtocol {
+    func charactersListDidFetch(characters: [Character]) {
+        view?.showCharacters(with: characters)
     }
 
-    func interactorDidFetchMarvelResponse(with result: Result<MarvelResponse, Error>) {
-        switch result {
-        case .success(let response):
-            view?.update(with: response)
-        case .failure(let error):
-            switch error {
-            case MarvelError.invalidFormat:
-                view?.update(with: "Couldn't decode JSON")
-            case MarvelError.networkError:
-                view?.update(with: "Couldn't fetch data")
-            default:
-                view?.update(with: "Unknown error")
-            }
-        }
-    }
-
-    func interactorDidFetchMarvelImage(with result: Result<UIImage, Error>) {
-        
+    func displayErrorMessage(_ error: String) {
+        view?.showErrorMessage(with: error)
     }
 }

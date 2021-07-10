@@ -28,18 +28,16 @@ final class NetworkManager {
                     let marvelResponse = try filteredResponse.map(MarvelResponse.self)
                     completion(.success(marvelResponse))
                 } catch {
-                    print("Couldn't decode response ", error)
                     completion(.failure(MarvelError.invalidFormat))
                 }
-            case let .failure(error):
-                print("Couldn't fetch data ", error)
+            case .failure:
                 completion(.failure(MarvelError.networkError))
             }
         }
     }
 
-    func fetchNextCharacters(_ offset: Int, _ limit: Int, _ completion: @escaping Closure<MarvelResponse>) {
-        provider.request(.listNextCharacters(offset: offset, limit: limit)) { result in
+    func fetchNextCharacters(_ offset: Int, _ completion: @escaping Closure<MarvelResponse>) {
+        provider.request(.listNextCharacters(offset: offset)) { result in
             switch result {
             case let .success(response):
                 do {
@@ -47,11 +45,9 @@ final class NetworkManager {
                     let marvelResponse = try filteredResponse.map(MarvelResponse.self)
                     completion(.success(marvelResponse))
                 } catch {
-                    print("Couldn't decode response ", error)
                     completion(.failure(MarvelError.invalidFormat))
                 }
-            case let .failure(error):
-                print("Couldn't fetch data ", error)
+            case .failure:
                 completion(.failure(MarvelError.networkError))
             }
         }
@@ -66,11 +62,9 @@ final class NetworkManager {
                     let marvelResponse = try filteredResponse.mapImage()
                     completion(.success(marvelResponse))
                 } catch {
-                    print("Couldn't decode response ", error)
                     completion(.failure(MarvelError.invalidFormat))
                 }
-            case let .failure(error):
-                print("Couldn't fetch data ", error)
+            case .failure:
                 completion(.failure(MarvelError.networkError))
             }
         }

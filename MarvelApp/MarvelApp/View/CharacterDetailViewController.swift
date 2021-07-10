@@ -5,7 +5,7 @@
 //  Created by Jesús Sánchez on 27/06/21.
 //
 
-import UIKit
+/* import UIKit
 
 // Currently using the Square aspect ratio: https://developer.marvel.com/documentation/images
 enum ImageSizes: String {
@@ -91,3 +91,4 @@ extension CharacterDetailViewController: AnyView {
         characterImage.image = image
     }
 }
+*/ 

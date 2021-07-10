@@ -1,48 +1,36 @@
 //
-//  MarvelInteractor.swift
+//  HomeInteractor.swift
 //  MarvelApp
 //
-//  Created by Jesús Sánchez on 26/06/21.
+//  Created by Jesús Sánchez on 09/07/21.
 //
 
 import Foundation
 
-protocol AnyInteractor {
-    var presenter: AnyPresenter? { get set }
+class HomeInteractor: HomeInputInteractorProtocol {
+    var presenter: HomeOutputInteractorProtocol?
 
-    func getCharacters()
-    func getNextCharacters(_ offset: Int, _ limit: Int)
-    func getCharacterThumbnail(_ urlString: String)
-}
+    func getCharactersList(with offset: Int) {
+        fetchCharacters(with: offset)
+    }
 
-class HomeInteractor: AnyInteractor {
-    var presenter: AnyPresenter?
-
-    func getCharacters() {
-        NetworkManager.shared.fetchCharacters { result in
+    private func fetchCharacters(with offset: Int) {
+        NetworkManager.shared.fetchNextCharacters(offset) { result in
             switch result {
             case let .success(response):
-                self.presenter?.interactorDidFetchMarvelResponse(with: .success(response))
-                break
+                self.presenter?.charactersListDidFetch(characters: response.data?.results ?? [])
             case let .failure(error):
-                self.presenter?.interactorDidFetchMarvelResponse(with: .failure(error))
-                break
+                self.presenter?.displayErrorMessage(self.getError(from: error))
             }
         }
     }
 
-    func getNextCharacters(_ offset: Int, _ limit: Int) {
-        NetworkManager.shared.fetchNextCharacters(offset, limit) { result in
-            switch result {
-            case let .success(response):
-                self.presenter?.interactorDidFetchMarvelResponse(with: .success(response))
-            case let .failure(error):
-                self.presenter?.interactorDidFetchMarvelResponse(with: .failure(error))
-            }
+    private func getError(from error: MarvelError) -> String {
+        switch error {
+        case .invalidFormat:
+            return "Couldn't decode JSON"
+        case .networkError:
+            return "Couldn't fetch data"
         }
-    }
-
-    func getCharacterThumbnail(_ urlString: String) {
-        
     }
 }

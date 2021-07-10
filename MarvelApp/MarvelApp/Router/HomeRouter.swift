@@ -1,39 +1,37 @@
 //
-//  MarvelRouter.swift
+//  HomeRouter.swift
 //  MarvelApp
 //
-//  Created by Jesús Sánchez on 26/06/21.
+//  Created by Jesús Sánchez on 09/07/21.
 //
 
 import UIKit
 
-typealias EntryPoint = AnyView & UIViewController
+typealias EntryPoint = HomeViewProtocol & UIViewController
 
-protocol AnyRouter {
-    var entry: EntryPoint? { get }
-
-    static func start(with imageURL: String?) -> AnyRouter
-}
-
-class HomeRouter: AnyRouter {
+class HomeRouter: HomeRouterProtocol {
     var entry: EntryPoint?
 
-    static func start(with imageURL: String?) -> AnyRouter {
+    func pushToCharacterDetails(with character: Character, from view: UIViewController) {
+        print("Not yet implemented")
+    }
+
+    static func start() -> HomeRouterProtocol {
         let router = HomeRouter()
 
-        var view: AnyView = HomeViewController()
-        var presenter: AnyPresenter = HomePresenter()
-        var interactor: AnyInteractor = HomeInteractor()
+        let view = HomeViewController()
+        let presenter = HomePresenter()
+        let interactor = HomeInteractor()
 
         view.presenter = presenter
 
         interactor.presenter = presenter
 
         presenter.router = router
-        presenter.interactor = interactor
         presenter.view = view
+        presenter.interactor = interactor
 
-        router.entry = view as? EntryPoint
+        router.entry = view as EntryPoint
 
         return router
     }

@@ -11,7 +11,7 @@ import CryptoKit
 
 enum Endpoints {
     case listCharacters
-    case listNextCharacters(offset: Int, limit: Int)
+    case listNextCharacters(offset: Int)
     case getCharacter(characterId: String)
     case fetchThumbnail(urlString: String)
 }
@@ -31,7 +31,7 @@ extension Endpoints: TargetType {
 
     var path: String {
         switch self {
-        case .listCharacters, .listNextCharacters(_, _):
+        case .listCharacters, .listNextCharacters(_):
             return "/v1/public/characters"
         case .getCharacter(let characterId):
             return "/v1/public/characters/\(characterId)"
@@ -46,7 +46,7 @@ extension Endpoints: TargetType {
 
     var sampleData: Data {
         switch self {
-        case .listCharacters, .listNextCharacters(_, _):
+        case .listCharacters, .listNextCharacters(_):
             return "{\"copyright\":\"© 2021 MARVEL\",\"attributionText\":\"Data provided by Marvel. © 2021 MARVEL\",\"data\":{\"offset\":0,\"limit\":1,\"results\":[{\"id\":1011334,\"name\":\"3-D Man\",\"description\":\"\",\"thumbnail\":{\"path\":\"http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784\",\"extension\":\"jpg\"}}]}}".utf8Encoded
         case .getCharacter(_):
             return "{\"copyright\":\"© 2021 MARVEL\",\"attributionText\":\"Data provided by Marvel. © 2021 MARVEL\",\"data\":{\"offset\":0,\"limit\":20,\"results\":[{\"id\":1009664,\"name\":\"Thor\",\"description\":\"As the Norse God of thunder and lightning, Thor wields one of the greatest weapons ever made, the enchanted hammer Mjolnir. While others have described Thor as an over-muscled, oafish imbecile, he's quite smart and compassionate.  He's self-assured, and he would never, ever stop fighting for a worthwhile cause.\",\"thumbnail\":{\"path\":\"http://i.annihil.us/u/prod/marvel/i/mg/d/d0/5269657a74350\",\"extension\":\"jpg\"}}]}}".utf8Encoded
@@ -67,9 +67,8 @@ extension Endpoints: TargetType {
                                          "hash" : hash]
 
         switch self {
-        case .listNextCharacters(let offset, let limit):
+        case .listNextCharacters(let offset):
             parameters["offset"] = offset
-            parameters["limit"] = limit
         case .fetchThumbnail(_):
             parameters = [:]
         default:

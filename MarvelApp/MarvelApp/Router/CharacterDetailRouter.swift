@@ -1,5 +1,5 @@
 //
-//  CharacterDetailsInteractor.swift
+//  CharacterDetailRouter.swift
 //  MarvelApp
 //
 //  Created by Jesús Sánchez on 09/07/21.
