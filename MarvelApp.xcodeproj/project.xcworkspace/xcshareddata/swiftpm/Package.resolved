@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "Alamofire",
-        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire",
         "state": {
           "branch": null,
           "revision": "f96b619bcb2383b43d898402283924b80e2c4bae",
@@ -21,7 +21,7 @@
       },
       {
         "package": "Moya",
-        "repositoryURL": "https://github.com/Moya/Moya.git",
+        "repositoryURL": "https://github.com/Moya/Moya",
         "state": {
           "branch": null,
           "revision": "d27767c3624cc64a45bb371b267b89c92d70c670",

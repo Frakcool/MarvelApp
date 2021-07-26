@@ -1,0 +1,28 @@
+name: MarvelApp
+options:
+  createIntermediateGroups: true
+  indentWidth: 4
+  tabWidth: 4
+  bundleIdPrefix: "sof.frakcool.MarvelApp"
+targets:
+  MarvelApp:
+    type: application
+    platform: iOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: MarvelApp
+  MarvelApp-iOS-Tests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: MarvelAppTests
+    dependencies:
+      - target: MarvelApp
+packages:
+  Moya:
+    from: "14.0.0"
+    url: "https://github.com/Moya/Moya"
+  AlamoFire:
+    from: "5.4"
+    url: "https://github.com/Alamofire/Alamofire"
