@@ -29,6 +29,6 @@ extension CharacterDetailPresenter: CharacterDetailOutputInteractorProtocol {
     }
 
     func displayErrorMessage(error: String) {
-        print(error)
+        view?.showErrorMessage(with: error)
     }
 }

@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  MarvelApp
+
+  Created by Jesús Sánchez on 08/08/21.
+  
+*/
+
+"NO_DESCRIPTION_AVAILABLE" = "<No se encontró una descripción>";
+"INVALID_FORMAT" = "No se pudo decodificar la información";
+"COULD_NOT_FETCH_DATA" = "No se pudo descargar la información";
