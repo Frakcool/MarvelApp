@@ -40,6 +40,6 @@ protocol HomeOutputInteractorProtocol: AnyObject {
 protocol HomeRouterProtocol: AnyObject {
     var entry: EntryPoint? { get }
 
-    func pushToCharacterDetails(with character: Character, from view: UIViewController)
+    func displayCharacterDetails(with character: Character, from view: UIViewController)
     static func start() -> HomeRouterProtocol
 }

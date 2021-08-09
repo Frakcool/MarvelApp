@@ -51,13 +51,19 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
 
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        errorLabel.translatesAutoresizingMaskIntoConstraints = false
 
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             tableView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             tableView.widthAnchor.constraint(equalTo: safeArea.widthAnchor),
-            tableView.heightAnchor.constraint(equalTo: safeArea.heightAnchor)
+            tableView.heightAnchor.constraint(equalTo: safeArea.heightAnchor),
+
+            errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            errorLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            errorLabel.widthAnchor.constraint(equalTo: safeArea.widthAnchor),
+            errorLabel.heightAnchor.constraint(equalTo: safeArea.heightAnchor)
         ])
     }
 }
@@ -99,6 +105,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let character = characters[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
         presenter?.showCharacterDetail(of: character, from: self)
     }
 

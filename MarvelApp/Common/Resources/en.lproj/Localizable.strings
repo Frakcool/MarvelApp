@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  MarvelApp
+
+  Created by Jesús Sánchez on 08/08/21.
+  
+*/
+
+"NO_DESCRIPTION_AVAILABLE" = "<No description available>";
+"INVALID_FORMAT" = "Couldn't decode data";
+"COULD_NOT_FETCH_DATA" = "Couldn't retrieve data";

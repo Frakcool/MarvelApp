@@ -11,6 +11,8 @@ targets:
     deploymentTarget: "14.0"
     sources:
       - path: MarvelApp
+    dependencies:
+      - package: Moya
   MarvelApp-iOS-Tests:
     type: bundle.unit-test
     platform: iOS

@@ -20,6 +20,7 @@ protocol CharacterDetailPresenterProtocol: AnyObject {
 protocol CharacterDetailViewProtocol: AnyObject {
     func showCharacterDetails(with character: Character)
     func showCharacterImage(with image: UIImage)
+    func showErrorMessage(with error: String)
 }
 
 // Presenter -> Interactor

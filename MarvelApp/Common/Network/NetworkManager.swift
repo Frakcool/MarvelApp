@@ -14,6 +14,9 @@ enum MarvelError: Error {
 }
 
 final class NetworkManager {
+    // To make the class a singleton
+    private init() {}
+
     typealias Closure<T> = (Result<T, MarvelError>) -> Void
 
     static let shared = NetworkManager()
