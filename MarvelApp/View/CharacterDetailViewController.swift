@@ -20,7 +20,7 @@ class CharacterDetailViewController: UIViewController {
     private enum Constants {
         static let positiveMargin = CGFloat(20)
         static let negativeMargin = CGFloat(-20)
-        static let noDescription = "<No description available>"
+        static let noDescription = NSLocalizedString("NO_DESCRIPTION_AVAILABLE", comment: "")
         static let copyright = "Copyright" // TODO: Use the one from Web Service
     }
 
@@ -87,6 +87,26 @@ extension CharacterDetailViewController: CharacterDetailViewProtocol {
 
     func showCharacterImage(with image: UIImage) {
         characterImage.image = image
+    }
+
+    func showErrorMessage(with error: String) {
+        let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style{
+                case .default:
+                print("default")
+
+                case .cancel:
+                print("cancel")
+
+                case .destructive:
+                print("destructive")
+
+            @unknown default:
+                print("Unknown")
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

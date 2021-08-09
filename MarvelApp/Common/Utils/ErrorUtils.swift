@@ -11,9 +11,9 @@ struct ErrorUtils {
     static func getError(from error: MarvelError) -> String {
         switch error {
         case .invalidFormat:
-            return "Couldn't decode JSON"
+            return NSLocalizedString("INVALID_FORMAT", comment: "")
         case .networkError:
-            return "Couldn't fetch data"
+            return NSLocalizedString("COULD_NOT_FETCH_DATA", comment: "")
         }
     }
 }

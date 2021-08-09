@@ -12,7 +12,7 @@ typealias EntryPoint = HomeViewProtocol & UIViewController
 class HomeRouter: HomeRouterProtocol {
     var entry: EntryPoint?
 
-    func pushToCharacterDetails(with character: Character, from view: UIViewController) {
+    func displayCharacterDetails(with character: Character, from view: UIViewController) {
         let detailsVC = CharacterDetailViewController()
         CharacterDetailRouter.createCharacterDetailView(with: detailsVC, and: character)
 

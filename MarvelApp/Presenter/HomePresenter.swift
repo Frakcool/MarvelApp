@@ -19,7 +19,7 @@ class HomePresenter: HomePresenterProtocol {
     }
 
     func showCharacterDetail(of character: Character, from view: UIViewController) {
-        router?.pushToCharacterDetails(with: character, from: view)
+        router?.displayCharacterDetails(with: character, from: view)
     }
 }
 
