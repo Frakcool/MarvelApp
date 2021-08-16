@@ -27,21 +27,23 @@ targets:
   Data:
     type: framework
     platform: iOS
-    sources: "Sources/Data"
+    sources: "Frameworks/Data"
     settings:
         base:
             PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.framework
+    dependencies:
+      - package: Moya
   Domain:
     type: framework
     platform: iOS
-    sources: "Sources/Domain"
+    sources: "Frameworks/Domain"
     settings:
         base:
             PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.framework
   Presentation:
     type: framework
     platform: iOS
-    sources: "Sources/Presentation"
+    sources: "Frameworks/Presentation"
     settings:
         base:
             PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.framework
