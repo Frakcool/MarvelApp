@@ -13,6 +13,9 @@ targets:
       - path: MarvelApp
     dependencies:
       - package: Moya
+      - target: Presentation
+      - target: Domain
+      - target: Data
   MarvelApp-iOS-Tests:
     type: bundle.unit-test
     platform: iOS
@@ -21,6 +24,29 @@ targets:
       - path: MarvelAppTests
     dependencies:
       - target: MarvelApp
+  Data:
+    type: framework
+    platform: iOS
+    sources: "Frameworks/Data"
+    settings:
+        base:
+            PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.framework
+    dependencies:
+      - package: Moya
+  Domain:
+    type: framework
+    platform: iOS
+    sources: "Frameworks/Domain"
+    settings:
+        base:
+            PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.framework
+  Presentation:
+    type: framework
+    platform: iOS
+    sources: "Frameworks/Presentation"
+    settings:
+        base:
+            PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.framework
 packages:
   Moya:
     from: "14.0.0"
