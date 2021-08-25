@@ -5,10 +5,11 @@
 //  Created by Jesús Sánchez on 26/06/21.
 //
 
+import Domain
 import UIKit
 
-class HomeViewController: UIViewController {
-    var presenter: HomePresenterProtocol?
+public class HomeViewController: UIViewController {
+    public var presenter: HomePresenterProtocol?
     var characters: [Character] = []
 
     private enum Constants {
@@ -34,7 +35,7 @@ class HomeViewController: UIViewController {
         return label
     }()
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
@@ -71,7 +72,7 @@ class HomeViewController: UIViewController {
 // MARK: VIPER
 
 extension HomeViewController: HomeViewProtocol {
-    func showCharacters(with characters: [Character]) {
+    public func showCharacters(with characters: [Character]) {
         self.characters = characters
         tableView.reloadData()
 
@@ -79,7 +80,7 @@ extension HomeViewController: HomeViewProtocol {
         tableView.isHidden = false
     }
 
-    func showErrorMessage(with error: String) {
+    public func showErrorMessage(with error: String) {
         errorLabel.text = error
 
         errorLabel.isHidden = false
@@ -90,7 +91,7 @@ extension HomeViewController: HomeViewProtocol {
 // MARK: TableView
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath)
 
         let character = characters[indexPath.row]
@@ -99,17 +100,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characters.count
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let character = characters[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
         presenter?.showCharacterDetail(of: character, from: self)
     }
 
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == characters.count - Constants.lastColumns {
             presenter?.getNextCharacters(characters.count)
         }

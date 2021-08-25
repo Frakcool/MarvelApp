@@ -8,7 +8,7 @@
 import UIKit
 
 // Currently using the Square aspect ratio: https://developer.marvel.com/documentation/images
-enum ImageSizes: Int, CaseIterable {
+public enum ImageSizes: Int, CaseIterable {
     case small // 65 x 45
     case medium // 100 x 100
     case large // 140 x 140
@@ -16,7 +16,7 @@ enum ImageSizes: Int, CaseIterable {
     case fantastic // 250 x 250
     case amazing // 180 x 180
 
-    var name: String {
+    public var name: String {
         switch self {
         case .small:
             return "standard_small"
@@ -33,37 +33,20 @@ enum ImageSizes: Int, CaseIterable {
         }
     }
 
-    var width: CGFloat {
+    public var size: CGSize {
         switch self {
         case .small:
-            return 65
+            return CGSize(width: 65, height: 45)
         case .medium:
-            return 100
+            return CGSize(width: 100, height: 100)
         case .large:
-            return 140
+            return CGSize(width: 140, height: 140)
         case .xLarge:
-            return 200
+            return CGSize(width: 200, height: 200)
         case .fantastic:
-            return 250
+            return CGSize(width: 250, height: 250)
         case .amazing:
-            return 180
-        }
-    }
-
-    var height: CGFloat {
-        switch self {
-        case .small:
-            return 45
-        case .medium:
-            return 100
-        case .large:
-            return 140
-        case .xLarge:
-            return 200
-        case .fantastic:
-            return 250
-        case .amazing:
-            return 180
+            return CGSize(width: 180, height: 180)
         }
     }
 }

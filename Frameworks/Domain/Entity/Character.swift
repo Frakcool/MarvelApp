@@ -7,16 +7,22 @@
 
 import Foundation
 
-struct MarvelResponse: Decodable {
-    let copyright: String?
-    let attributionText: String?
-    let data: CharacterData?
+public struct MarvelResponse: Decodable {
+    public let copyright: String?
+    public let attributionText: String?
+    public let data: CharacterData?
 
     private enum CodingKeys: String, CodingKey {
         case copyright, attributionText, data
     }
 
-    init(from decoder: Decoder) throws {
+    public init(copyright: String?, attributionText: String, data: CharacterData?) {
+        self.copyright = copyright
+        self.attributionText = attributionText
+        self.data = data
+    }
+
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         self.copyright = try container.decodeIfPresent(String.self, forKey: .copyright)
@@ -25,16 +31,22 @@ struct MarvelResponse: Decodable {
     }
 }
 
-struct CharacterData: Decodable {
-    let offset: Int?
-    let limit: Int?
-    let results: [Character]?
+public struct CharacterData: Decodable {
+    public let offset: Int?
+    public let limit: Int?
+    public let results: [Character]?
 
     private enum CodingKeys: String, CodingKey {
         case offset, limit, results
     }
 
-    init(from decoder: Decoder) throws {
+    public init(offset: Int?, limit: Int?, results: [Character]?) {
+        self.offset = offset
+        self.limit = limit
+        self.results = results
+    }
+
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         self.offset = try container.decodeIfPresent(Int.self, forKey: .offset)
@@ -43,17 +55,24 @@ struct CharacterData: Decodable {
     }
 }
 
-struct Character: Decodable {
-    let id: Int?
-    let name: String?
-    let description: String?
-    let thumbnail: CharacterThumbnail?
+public struct Character: Decodable {
+    public let id: Int?
+    public let name: String?
+    public let description: String?
+    public let thumbnail: CharacterThumbnail?
 
     private enum CodingKeys: String, CodingKey {
         case id, name, description, thumbnail
     }
 
-    init(from decoder: Decoder) throws {
+    public init(id: Int?, name: String, description: String?, thumbnail: CharacterThumbnail?) {
+        self.id = id
+        self.name = name
+        self.description = description
+        self.thumbnail = thumbnail
+    }
+
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         self.id = try container.decodeIfPresent(Int.self, forKey: .id)
@@ -63,15 +82,20 @@ struct Character: Decodable {
     }
 }
 
-struct CharacterThumbnail: Decodable {
-    let path: String?
-    let type: String?
+public struct CharacterThumbnail: Decodable {
+    public let path: String?
+    public let type: String?
 
     private enum CodingKeys: String, CodingKey {
         case path, type = "extension"
     }
 
-    init(from decoder: Decoder) throws {
+    public init(path: String?, type: String?) {
+        self.path = path
+        self.type = type
+    }
+
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         self.path = try container.decodeIfPresent(String.self, forKey: .path)

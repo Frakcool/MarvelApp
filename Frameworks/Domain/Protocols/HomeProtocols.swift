@@ -7,14 +7,16 @@
 
 import UIKit
 
+public typealias EntryPoint = HomeViewProtocol & UIViewController
+
 // Presenter -> View
-protocol HomeViewProtocol: AnyObject {
+public protocol HomeViewProtocol: AnyObject {
     func showCharacters(with characters: [Character])
     func showErrorMessage(with error: String)
 }
 
 // View -> Presenter
-protocol HomePresenterProtocol: AnyObject {
+public protocol HomePresenterProtocol: AnyObject {
     var interactor: HomeInputInteractorProtocol? { get set }
     var view: HomeViewProtocol? { get set }
     var router: HomeRouterProtocol? { get set }
@@ -24,20 +26,20 @@ protocol HomePresenterProtocol: AnyObject {
 }
 
 // Presenter -> Interactor
-protocol HomeInputInteractorProtocol: AnyObject {
+public protocol HomeInputInteractorProtocol: AnyObject {
     var presenter: HomeOutputInteractorProtocol? { get set }
 
     func getCharactersList(with offset: Int)
 }
 
 // Interactor -> Presenter
-protocol HomeOutputInteractorProtocol: AnyObject {
+public protocol HomeOutputInteractorProtocol: AnyObject {
     func charactersListDidFetch(characters: [Character])
     func displayErrorMessage(_ error: String)
 }
 
 // Presenter -> Router
-protocol HomeRouterProtocol: AnyObject {
+public protocol HomeRouterProtocol: AnyObject {
     var entry: EntryPoint? { get }
 
     func displayCharacterDetails(with character: Character, from view: UIViewController)

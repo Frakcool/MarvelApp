@@ -5,9 +5,10 @@
 //  Created by Jesús Sánchez on 27/06/21.
 //
 
+import Domain
 import UIKit
 
-class CharacterDetailViewController: UIViewController {
+public class CharacterDetailViewController: UIViewController {
     var characterImage = UIImageView()
     var nameLabel = UILabel()
     var descriptionLabel = UILabel()
@@ -15,7 +16,7 @@ class CharacterDetailViewController: UIViewController {
 
     var character: Character!
 
-    var presenter: CharacterDetailPresenterProtocol?
+    public var presenter: CharacterDetailPresenterProtocol?
 
     private enum Constants {
         static let positiveMargin = CGFloat(20)
@@ -24,7 +25,7 @@ class CharacterDetailViewController: UIViewController {
         static let copyright = "Copyright" // TODO: Use the one from Web Service
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
@@ -50,8 +51,8 @@ class CharacterDetailViewController: UIViewController {
         let layout = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             characterImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            characterImage.heightAnchor.constraint(equalToConstant: ImageSizes.amazing.height), // Amazing
-            characterImage.widthAnchor.constraint(equalToConstant: ImageSizes.amazing.width), // Amazing
+            characterImage.heightAnchor.constraint(equalToConstant: ImageSizes.amazing.size.width), // Amazing
+            characterImage.widthAnchor.constraint(equalToConstant: ImageSizes.amazing.size.height), // Amazing
             characterImage.topAnchor.constraint(equalTo: layout.topAnchor, constant: Constants.positiveMargin),
 
             nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -76,7 +77,7 @@ class CharacterDetailViewController: UIViewController {
 }
 
 extension CharacterDetailViewController: CharacterDetailViewProtocol {
-    func showCharacterDetails(with character: Character) {
+    public func showCharacterDetails(with character: Character) {
         if let characterDescription = character.description {
             let desc = characterDescription.isEmpty ? Constants.noDescription : characterDescription
             descriptionLabel.text = desc
@@ -85,11 +86,11 @@ extension CharacterDetailViewController: CharacterDetailViewProtocol {
         }
     }
 
-    func showCharacterImage(with image: UIImage) {
+    public func showCharacterImage(with image: UIImage) {
         characterImage.image = image
     }
 
-    func showErrorMessage(with error: String) {
+    public func showErrorMessage(with error: String) {
         let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             switch action.style{

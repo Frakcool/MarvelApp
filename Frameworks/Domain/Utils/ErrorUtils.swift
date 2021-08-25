@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ErrorUtils {
-    static func getError(from error: MarvelError) -> String {
+public struct ErrorUtils {
+    public static func getError(from error: MarvelError) -> String {
         switch error {
         case .invalidFormat:
             return NSLocalizedString("INVALID_FORMAT", comment: "")

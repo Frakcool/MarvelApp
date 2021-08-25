@@ -5,24 +5,20 @@
 //  Created by Jesús Sánchez on 26/06/21.
 //
 
+import Domain
 import UIKit
 import Moya
 
-enum MarvelError: Error {
-    case networkError
-    case invalidFormat
-}
-
-final class NetworkManager {
+public final class NetworkManager {
     // To make the class a singleton
     private init() {}
 
-    typealias Closure<T> = (Result<T, MarvelError>) -> Void
+    public typealias Closure<T> = (Result<T, MarvelError>) -> Void
 
-    static let shared = NetworkManager()
+    public static let shared = NetworkManager()
     var provider = MoyaProvider<Endpoints>()
 
-    func fetchCharacters(_ completion: @escaping Closure<MarvelResponse>) {
+    public func fetchCharacters(_ completion: @escaping Closure<MarvelResponse>) {
         provider.request(.listCharacters) { result in
             switch result {
             case let .success(response):
@@ -39,7 +35,7 @@ final class NetworkManager {
         }
     }
 
-    func fetchNextCharacters(_ offset: Int, _ completion: @escaping Closure<MarvelResponse>) {
+    public func fetchNextCharacters(_ offset: Int, _ completion: @escaping Closure<MarvelResponse>) {
         provider.request(.listNextCharacters(offset: offset)) { result in
             switch result {
             case let .success(response):
@@ -56,7 +52,7 @@ final class NetworkManager {
         }
     }
 
-    func fetchThumbnail(_ urlString: String, _ completion: @escaping Closure<UIImage>) {
+    public func fetchThumbnail(_ urlString: String, _ completion: @escaping Closure<UIImage>) {
         provider.request(.fetchThumbnail(urlString: urlString)) { result in
             switch result {
             case let .success(response):

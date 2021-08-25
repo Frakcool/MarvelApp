@@ -5,30 +5,31 @@
 //  Created by Jesús Sánchez on 09/07/21.
 //
 
+import Domain
 import UIKit
 
-class HomePresenter: HomePresenterProtocol {
-    var interactor: HomeInputInteractorProtocol?
+public class HomePresenter: HomePresenterProtocol {
+    public var interactor: HomeInputInteractorProtocol?
 
-    var view: HomeViewProtocol?
+    public var view: HomeViewProtocol?
 
-    var router: HomeRouterProtocol?
+    public var router: HomeRouterProtocol?
 
-    func getNextCharacters(_ offset: Int) {
+    public func getNextCharacters(_ offset: Int) {
         interactor?.getCharactersList(with: offset)
     }
 
-    func showCharacterDetail(of character: Character, from view: UIViewController) {
+    public func showCharacterDetail(of character: Character, from view: UIViewController) {
         router?.displayCharacterDetails(with: character, from: view)
     }
 }
 
 extension HomePresenter: HomeOutputInteractorProtocol {
-    func charactersListDidFetch(characters: [Character]) {
+    public func charactersListDidFetch(characters: [Character]) {
         view?.showCharacters(with: characters)
     }
 
-    func displayErrorMessage(_ error: String) {
+    public func displayErrorMessage(_ error: String) {
         view?.showErrorMessage(with: error)
     }
 }

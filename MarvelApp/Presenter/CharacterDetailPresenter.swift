@@ -5,30 +5,31 @@
 //  Created by Jesús Sánchez on 09/07/21.
 //
 
+import Domain
 import UIKit
 
-class CharacterDetailPresenter: CharacterDetailPresenterProtocol {
-    var interactor: CharacterDetailInputInteractorProtocol?
+public class CharacterDetailPresenter: CharacterDetailPresenterProtocol {
+    public var interactor: CharacterDetailInputInteractorProtocol?
 
-    var view: CharacterDetailViewProtocol?
+    public var view: CharacterDetailViewProtocol?
 
-    var router: CharacterDetailRouterProtocol?
+    public var router: CharacterDetailRouterProtocol?
 
     var character: Character!
     var image: UIImage?
 
-    func viewDidLoad() {
+    public func viewDidLoad() {
         view?.showCharacterDetails(with: character)
         interactor?.getImage(for: character)
     }
 }
 
 extension CharacterDetailPresenter: CharacterDetailOutputInteractorProtocol {
-    func characterImageDidFetch(image: UIImage) {
+    public func characterImageDidFetch(image: UIImage) {
         view?.showCharacterImage(with: image)
     }
 
-    func displayErrorMessage(error: String) {
+    public func displayErrorMessage(error: String) {
         view?.showErrorMessage(with: error)
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 // View -> Presenter
-protocol CharacterDetailPresenterProtocol: AnyObject {
+public protocol CharacterDetailPresenterProtocol: AnyObject {
     var interactor: CharacterDetailInputInteractorProtocol? { get set }
     var view: CharacterDetailViewProtocol? { get set }
     var router: CharacterDetailRouterProtocol? { get set }
@@ -17,25 +17,25 @@ protocol CharacterDetailPresenterProtocol: AnyObject {
 }
 
 // Presenter -> View
-protocol CharacterDetailViewProtocol: AnyObject {
+public protocol CharacterDetailViewProtocol: AnyObject {
     func showCharacterDetails(with character: Character)
     func showCharacterImage(with image: UIImage)
     func showErrorMessage(with error: String)
 }
 
 // Presenter -> Interactor
-protocol CharacterDetailInputInteractorProtocol: AnyObject {
+public protocol CharacterDetailInputInteractorProtocol: AnyObject {
     var presenter: CharacterDetailOutputInteractorProtocol? { get set }
 
     func getImage(for character: Character)
 }
 
 // Interactor -> Presenter
-protocol CharacterDetailOutputInteractorProtocol: AnyObject {
+public protocol CharacterDetailOutputInteractorProtocol: AnyObject {
     func characterImageDidFetch(image: UIImage)
     func displayErrorMessage(error: String)
 }
 
-protocol CharacterDetailRouterProtocol: AnyObject {
+public protocol CharacterDetailRouterProtocol: AnyObject {
 
 }

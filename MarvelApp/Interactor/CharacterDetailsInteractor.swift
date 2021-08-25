@@ -5,6 +5,8 @@
 //  Created by Jesús Sánchez on 09/07/21.
 //
 
+import Data
+import Domain
 import Foundation
 
 class CharacterDetailsInteractor: CharacterDetailInputInteractorProtocol {

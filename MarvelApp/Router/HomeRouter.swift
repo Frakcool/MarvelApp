@@ -5,9 +5,9 @@
 //  Created by Jesús Sánchez on 09/07/21.
 //
 
+import Presentation
+import Domain
 import UIKit
-
-typealias EntryPoint = HomeViewProtocol & UIViewController
 
 class HomeRouter: HomeRouterProtocol {
     var entry: EntryPoint?

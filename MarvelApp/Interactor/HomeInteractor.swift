@@ -5,6 +5,8 @@
 //  Created by Jesús Sánchez on 09/07/21.
 //
 
+import Domain
+import Data
 import Foundation
 
 class HomeInteractor: HomeInputInteractorProtocol {

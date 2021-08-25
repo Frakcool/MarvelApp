@@ -27,15 +27,19 @@ targets:
   Data:
     type: framework
     platform: iOS
+    deploymentTarget: "14.0"
     sources: "Frameworks/Data"
     settings:
         base:
             PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.framework
     dependencies:
       - package: Moya
+      - package: Alamofire
+      - target: Domain
   Domain:
     type: framework
     platform: iOS
+    deploymentTarget: "14.0"
     sources: "Frameworks/Domain"
     settings:
         base:
@@ -43,14 +47,18 @@ targets:
   Presentation:
     type: framework
     platform: iOS
+    deploymentTarget: "14.0"
     sources: "Frameworks/Presentation"
     settings:
         base:
             PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.framework
+    dependencies:
+      - target: Domain
+      - target: Data
 packages:
   Moya:
     from: "14.0.0"
     url: "https://github.com/Moya/Moya"
-  AlamoFire:
+  Alamofire:
     from: "5.4"
     url: "https://github.com/Alamofire/Alamofire"
