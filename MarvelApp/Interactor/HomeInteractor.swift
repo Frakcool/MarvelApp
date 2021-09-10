@@ -9,8 +9,8 @@ import Domain
 import Data
 import Foundation
 
-class HomeInteractor: HomeInputInteractorProtocol {
-    var presenter: HomeOutputInteractorProtocol?
+class HomeInteractor/*: HomeInputInteractorProtocol*/ {
+    /*var presenter: HomeOutputInteractorProtocol?
     var characters: [Character] = []
 
     func getCharactersList(with offset: Int) {
@@ -31,5 +31,5 @@ class HomeInteractor: HomeInputInteractorProtocol {
                 self.presenter?.displayErrorMessage(ErrorUtils.getError(from: error))
             }
         }
-    }
+    }*/
 }

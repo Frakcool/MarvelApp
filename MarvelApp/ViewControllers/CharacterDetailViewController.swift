@@ -9,7 +9,7 @@ import Domain
 import UIKit
 
 public class CharacterDetailViewController: UIViewController {
-    var characterImage = UIImageView()
+    /*var characterImage = UIImageView()
     var nameLabel = UILabel()
     var descriptionLabel = UILabel()
     var copyrightLabel = UILabel()
@@ -108,6 +108,6 @@ extension CharacterDetailViewController: CharacterDetailViewProtocol {
             }
         }))
         self.present(alert, animated: true, completion: nil)
-    }
+    }*/
 }
 

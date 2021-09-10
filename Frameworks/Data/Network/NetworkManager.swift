@@ -5,7 +5,6 @@
 //  Created by Jesús Sánchez on 26/06/21.
 //
 
-import Domain
 import UIKit
 import Moya
 
@@ -13,7 +12,7 @@ public final class NetworkManager {
     // To make the class a singleton
     private init() {}
 
-    public typealias Closure<T> = (Result<T, MarvelError>) -> Void
+    public typealias Closure<T> = (Result<T, DataError>) -> Void
 
     public static let shared = NetworkManager()
     var provider = MoyaProvider<Endpoints>()
@@ -27,10 +26,10 @@ public final class NetworkManager {
                     let marvelResponse = try filteredResponse.map(MarvelResponse.self)
                     completion(.success(marvelResponse))
                 } catch {
-                    completion(.failure(MarvelError.invalidFormat))
+                    completion(.failure(DataError.invalidFormat))
                 }
             case .failure:
-                completion(.failure(MarvelError.networkError))
+                completion(.failure(DataError.networkError))
             }
         }
     }
@@ -43,11 +42,12 @@ public final class NetworkManager {
                     let filteredResponse = try response.filterSuccessfulStatusCodes()
                     let marvelResponse = try filteredResponse.map(MarvelResponse.self)
                     completion(.success(marvelResponse))
+                    // completion(.failure(DataError.invalidFormat))
                 } catch {
-                    completion(.failure(MarvelError.invalidFormat))
+                    completion(.failure(DataError.invalidFormat))
                 }
             case .failure:
-                completion(.failure(MarvelError.networkError))
+                completion(.failure(DataError.networkError))
             }
         }
     }
@@ -61,10 +61,10 @@ public final class NetworkManager {
                     let marvelResponse = try filteredResponse.mapImage()
                     completion(.success(marvelResponse))
                 } catch {
-                    completion(.failure(MarvelError.invalidFormat))
+                    completion(.failure(DataError.invalidFormat))
                 }
             case .failure:
-                completion(.failure(MarvelError.networkError))
+                completion(.failure(DataError.networkError))
             }
         }
     }

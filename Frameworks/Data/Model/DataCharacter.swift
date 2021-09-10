@@ -34,13 +34,13 @@ public struct MarvelResponse: Decodable {
 public struct CharacterData: Decodable {
     public let offset: Int?
     public let limit: Int?
-    public let results: [Character]?
+    public let results: [DataCharacter]?
 
     private enum CodingKeys: String, CodingKey {
         case offset, limit, results
     }
 
-    public init(offset: Int?, limit: Int?, results: [Character]?) {
+    public init(offset: Int?, limit: Int?, results: [DataCharacter]?) {
         self.offset = offset
         self.limit = limit
         self.results = results
@@ -51,11 +51,11 @@ public struct CharacterData: Decodable {
 
         self.offset = try container.decodeIfPresent(Int.self, forKey: .offset)
         self.limit = try container.decodeIfPresent(Int.self, forKey: .limit)
-        self.results = try container.decodeIfPresent([Character].self, forKey: .results)
+        self.results = try container.decodeIfPresent([DataCharacter].self, forKey: .results)
     }
 }
 
-public struct Character: Decodable {
+public struct DataCharacter: Decodable {
     public let id: Int?
     public let name: String?
     public let description: String?

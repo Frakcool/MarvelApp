@@ -9,8 +9,8 @@ import Data
 import Domain
 import Foundation
 
-class CharacterDetailsInteractor: CharacterDetailInputInteractorProtocol {
-    var presenter: CharacterDetailOutputInteractorProtocol?
+class CharacterDetailsInteractor/*: CharacterDetailInputInteractorProtocol*/ {
+    /*var presenter: CharacterDetailOutputInteractorProtocol?
 
     func getImage(for character: Character) {
         fetchImage(character)
@@ -34,5 +34,5 @@ class CharacterDetailsInteractor: CharacterDetailInputInteractorProtocol {
             return path + "/" + size + "." + ext
         }
         return ""
-    }
+    }*/
 }

@@ -6,11 +6,13 @@
 //
 
 import Domain
+import Presentation
 import UIKit
 
 public class HomeViewController: UIViewController {
-    public var presenter: HomePresenterProtocol?
-    var characters: [Character] = []
+    let viewModel = HomeViewModel()
+
+    var characters: [MarvelCharacter] = []
 
     private enum Constants {
         static let cellIdentifier: String = "characterCell"
@@ -44,12 +46,11 @@ public class HomeViewController: UIViewController {
         view.addSubview(tableView)
 
         configureTableView()
-        presenter?.getNextCharacters(0)
     }
 
     private func configureTableView() {
-        tableView.delegate = self
-        tableView.dataSource = self
+        // tableView.delegate = self
+        // tableView.dataSource = self
 
         tableView.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -71,7 +72,7 @@ public class HomeViewController: UIViewController {
 
 // MARK: VIPER
 
-extension HomeViewController: HomeViewProtocol {
+/*extension HomeViewController: HomeViewProtocol {
     public func showCharacters(with characters: [Character]) {
         self.characters = characters
         tableView.reloadData()
@@ -86,11 +87,11 @@ extension HomeViewController: HomeViewProtocol {
         errorLabel.isHidden = false
         tableView.isHidden = true
     }
-}
+}*/
 
 // MARK: TableView
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+/*extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath)
 
@@ -107,12 +108,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let character = characters[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
-        presenter?.showCharacterDetail(of: character, from: self)
+        // presenter?.showCharacterDetail(of: character, from: self)
     }
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == characters.count - Constants.lastColumns {
-            presenter?.getNextCharacters(characters.count)
+            // presenter?.getNextCharacters(characters.count)
         }
     }
-}
+}*/

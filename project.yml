@@ -31,11 +31,10 @@ targets:
     sources: "Frameworks/Data"
     settings:
         base:
-            PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.framework
+            PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.data.framework
     dependencies:
       - package: Moya
       - package: Alamofire
-      - target: Domain
   Domain:
     type: framework
     platform: iOS
@@ -43,7 +42,9 @@ targets:
     sources: "Frameworks/Domain"
     settings:
         base:
-            PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.framework
+            PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.domain.framework
+    dependencies:
+      - target: Data
   Presentation:
     type: framework
     platform: iOS
@@ -51,10 +52,9 @@ targets:
     sources: "Frameworks/Presentation"
     settings:
         base:
-            PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.framework
+            PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.presentation.framework
     dependencies:
       - target: Domain
-      - target: Data
 packages:
   Moya:
     from: "14.0.0"

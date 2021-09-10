@@ -9,8 +9,8 @@ import Presentation
 import Domain
 import UIKit
 
-class CharacterDetailRouter: CharacterDetailRouterProtocol {
-    class func createCharacterDetailView(with view: CharacterDetailViewController, and character: Character) {
+class CharacterDetailRouter/*: CharacterDetailRouterProtocol */{
+    /*class func createCharacterDetailView(with view: CharacterDetailViewController, and character: Character) {
         let router = CharacterDetailRouter()
         let presenter = CharacterDetailPresenter()
         let interactor = CharacterDetailsInteractor()
@@ -23,5 +23,5 @@ class CharacterDetailRouter: CharacterDetailRouterProtocol {
         presenter.router = router
         presenter.interactor = interactor
         presenter.character = character
-    }
+    }*/
 }

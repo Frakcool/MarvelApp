@@ -8,8 +8,8 @@
 import Domain
 import UIKit
 
-public class HomePresenter: HomePresenterProtocol {
-    public var interactor: HomeInputInteractorProtocol?
+public class HomePresenter/*: HomePresenterProtocol*/ {
+    /*public var interactor: HomeInputInteractorProtocol?
 
     public var view: HomeViewProtocol?
 
@@ -31,5 +31,5 @@ extension HomePresenter: HomeOutputInteractorProtocol {
 
     public func displayErrorMessage(_ error: String) {
         view?.showErrorMessage(with: error)
-    }
+    }*/
 }

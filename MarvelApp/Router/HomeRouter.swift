@@ -9,8 +9,8 @@ import Presentation
 import Domain
 import UIKit
 
-class HomeRouter: HomeRouterProtocol {
-    var entry: EntryPoint?
+class HomeRouter/*: HomeRouterProtocol*/ {
+    /*var entry: EntryPoint?
 
     func displayCharacterDetails(with character: Character, from view: UIViewController) {
         let detailsVC = CharacterDetailViewController()
@@ -37,5 +37,5 @@ class HomeRouter: HomeRouterProtocol {
         router.entry = view as EntryPoint
 
         return router
-    }
+    }*/
 }

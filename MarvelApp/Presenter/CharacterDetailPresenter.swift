@@ -8,8 +8,8 @@
 import Domain
 import UIKit
 
-public class CharacterDetailPresenter: CharacterDetailPresenterProtocol {
-    public var interactor: CharacterDetailInputInteractorProtocol?
+public class CharacterDetailPresenter/*: CharacterDetailPresenterProtocol */{
+    /*public var interactor: CharacterDetailInputInteractorProtocol?
 
     public var view: CharacterDetailViewProtocol?
 
@@ -31,5 +31,5 @@ extension CharacterDetailPresenter: CharacterDetailOutputInteractorProtocol {
 
     public func displayErrorMessage(error: String) {
         view?.showErrorMessage(with: error)
-    }
+    }*/
 }
