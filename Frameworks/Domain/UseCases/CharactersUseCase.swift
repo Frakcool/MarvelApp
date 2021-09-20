@@ -1,0 +1,24 @@
+//
+//  CharactersUseCase.swift
+//  Domain
+//
+//  Created by Jesús Sánchez on 17/09/21.
+//
+
+import Foundation
+
+public final class CharactersUseCase {
+    let provider: CharactersContract
+
+    public init(_ provider: CharactersContract) {
+        self.provider = provider
+    }
+
+    public func characters(offset: Int?, completion: @escaping CharactersListCompletion) {
+        provider.characters(offset: offset, completion: completion)
+    }
+
+    public func character(_ id: String, completion: @escaping CharacterCompletion) {
+        provider.character(id, completion: completion)
+    }
+}

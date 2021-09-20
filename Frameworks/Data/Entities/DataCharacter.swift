@@ -56,7 +56,7 @@ public struct CharacterData: Decodable {
 }
 
 public struct DataCharacter: Decodable {
-    public let id: Int?
+    public let id: String?
     public let name: String?
     public let description: String?
     public let thumbnail: CharacterThumbnail?
@@ -65,7 +65,7 @@ public struct DataCharacter: Decodable {
         case id, name, description, thumbnail
     }
 
-    public init(id: Int?, name: String, description: String?, thumbnail: CharacterThumbnail?) {
+    public init(id: String?, name: String, description: String?, thumbnail: CharacterThumbnail?) {
         self.id = id
         self.name = name
         self.description = description
@@ -75,7 +75,7 @@ public struct DataCharacter: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        self.id = try container.decodeIfPresent(Int.self, forKey: .id)
+        self.id = try container.decodeIfPresent(String.self, forKey: .id)
         self.name = try container.decodeIfPresent(String.self, forKey: .name)
         self.description = try container.decodeIfPresent(String.self, forKey: .description)
         self.thumbnail = try container.decodeIfPresent(CharacterThumbnail.self, forKey: .thumbnail)

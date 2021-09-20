@@ -1,21 +1,20 @@
 //
-//  Endpoints.swift
-//  MarvelApp
+//  CharacterService.swift
+//  Data
 //
-//  Created by Jesús Sánchez on 26/06/21.
+//  Created by Jesús Sánchez on 18/09/21.
 //
 
 import Foundation
 import Moya
 
-enum Endpoints {
-    case listCharacters
-    case listNextCharacters(offset: Int)
+enum CharacterService {
+    case listCharacters(offset: Int?)
     case getCharacter(characterId: String)
     case fetchThumbnail(urlString: String)
 }
 
-extension Endpoints: TargetType {
+extension CharacterService: TargetType {
     var baseURL: URL {
         switch self {
         case .fetchThumbnail(let urlString):
@@ -30,7 +29,7 @@ extension Endpoints: TargetType {
 
     var path: String {
         switch self {
-        case .listCharacters, .listNextCharacters(_):
+        case .listCharacters(_):
             return "/v1/public/characters"
         case .getCharacter(let characterId):
             return "/v1/public/characters/\(characterId)"
@@ -45,7 +44,7 @@ extension Endpoints: TargetType {
 
     var sampleData: Data {
         switch self {
-        case .listCharacters, .listNextCharacters(_):
+        case .listCharacters(_):
             return "{\"copyright\":\"© 2021 MARVEL\",\"attributionText\":\"Data provided by Marvel. © 2021 MARVEL\",\"data\":{\"offset\":0,\"limit\":1,\"results\":[{\"id\":1011334,\"name\":\"3-D Man\",\"description\":\"\",\"thumbnail\":{\"path\":\"http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784\",\"extension\":\"jpg\"}}]}}".utf8Encoded
         case .getCharacter(_):
             return "{\"copyright\":\"© 2021 MARVEL\",\"attributionText\":\"Data provided by Marvel. © 2021 MARVEL\",\"data\":{\"offset\":0,\"limit\":20,\"results\":[{\"id\":1009664,\"name\":\"Thor\",\"description\":\"As the Norse God of thunder and lightning, Thor wields one of the greatest weapons ever made, the enchanted hammer Mjolnir. While others have described Thor as an over-muscled, oafish imbecile, he's quite smart and compassionate.  He's self-assured, and he would never, ever stop fighting for a worthwhile cause.\",\"thumbnail\":{\"path\":\"http://i.annihil.us/u/prod/marvel/i/mg/d/d0/5269657a74350\",\"extension\":\"jpg\"}}]}}".utf8Encoded
@@ -66,7 +65,7 @@ extension Endpoints: TargetType {
                                          "hash" : hash]
 
         switch self {
-        case .listNextCharacters(let offset):
+        case .listCharacters(let offset):
             parameters["offset"] = offset
         case .fetchThumbnail(_):
             parameters = [:]

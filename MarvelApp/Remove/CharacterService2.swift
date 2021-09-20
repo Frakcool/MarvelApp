@@ -8,13 +8,9 @@
 import UIKit
 import Moya
 
-public final class NetworkManager {
-    // To make the class a singleton
-    private init() {}
+public final class CharactersService2 {
 
-    public typealias Closure<T> = (Result<T, DataError>) -> Void
-
-    public static let shared = NetworkManager()
+    /*public static let shared = NetworkManager()
     var provider = MoyaProvider<Endpoints>()
 
     public func fetchCharacters(_ completion: @escaping Closure<MarvelResponse>) {
@@ -67,5 +63,5 @@ public final class NetworkManager {
                 completion(.failure(DataError.networkError))
             }
         }
-    }
+    }*/
 }
