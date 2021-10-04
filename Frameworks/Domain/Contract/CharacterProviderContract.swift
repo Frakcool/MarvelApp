@@ -11,7 +11,7 @@ public typealias CharacterCompletion = (_ result: Result<MarvelCharacter, Marvel
 
 public typealias CharactersListCompletion = (_ result: Result<[MarvelCharacter], MarvelError>) -> Void
 
-public protocol CharactersContract {
+public protocol CharactersProviderContract {
     func characters(offset: Int?, completion: @escaping CharactersListCompletion)
     func character(_ id: String, completion: @escaping CharacterCompletion)
 }

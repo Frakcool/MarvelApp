@@ -8,9 +8,9 @@
 import Foundation
 
 public final class CharactersUseCase {
-    let provider: CharactersContract
+    let provider: CharactersProviderContract
 
-    public init(_ provider: CharactersContract) {
+    public init(_ provider: CharactersProviderContract) {
         self.provider = provider
     }
 

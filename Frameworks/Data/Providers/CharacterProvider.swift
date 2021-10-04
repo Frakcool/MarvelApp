@@ -5,13 +5,27 @@
 //  Created by Jesús Sánchez on 18/09/21.
 //
 
+/*
+ Provider -> Pasar data de API / DB a Domain
+
+ Data > Domain > Use Case (MVVM) > UI
+
+ Use Case > Domain > Data
+ */
+
 import Domain
 import Moya
 
-class CharacterProvider: CharactersContract {
-    var provider = MoyaProvider<CharacterService>()
+public class CharacterProvider: CharactersProviderContract {
+    let provider = MoyaProvider<CharacterService>(plugins: [NetworkLoggerPlugin(configuration: NetworkLoggerPlugin.Configuration(logOptions: .verbose))])
 
-    func characters(offset: Int?, completion: @escaping CharactersListCompletion) {
+    // var provider = MoyaProvider<CharacterService>()
+
+    public init() {
+        
+    }
+
+    public func characters(offset: Int?, completion: @escaping CharactersListCompletion) {
         provider.request(.listCharacters(offset: offset)) { result in
             switch result {
             case let .success(response):
@@ -38,7 +52,7 @@ class CharacterProvider: CharactersContract {
         }
     }
 
-    func character(_ id: String, completion: @escaping CharacterCompletion) {
+    public func character(_ id: String, completion: @escaping CharacterCompletion) {
         provider.request(.getCharacter(characterId: id)) { result in
             switch result {
             case let .success(response):
@@ -59,7 +73,7 @@ class CharacterProvider: CharactersContract {
     }
 
     private func convertToDomainCharacter(_ character: DataCharacter) -> MarvelCharacter {
-        return MarvelCharacter(id: character.id ?? "",
+        return MarvelCharacter(id: character.id ?? 0,
                         name: character.name ?? "",
                         description: character.description ?? "",
                         thumbnail: Thumbnail(path: character.thumbnail?.path ?? "",

@@ -8,12 +8,12 @@
 import Foundation
 
 @objc public class MarvelCharacter: NSObject {
-    @objc public let id: String
+    @objc public let id: Int
     @objc public let name: String
     @objc public let characterDescription: String
     @objc public let thumbnail: Thumbnail
 
-    public init(id: String, name: String, description: String, thumbnail: Thumbnail) {
+    public init(id: Int, name: String, description: String, thumbnail: Thumbnail) {
         self.id = id
         self.name = name
         self.characterDescription = description

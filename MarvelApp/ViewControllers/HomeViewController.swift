@@ -10,13 +10,19 @@ import Presentation
 import UIKit
 
 public class HomeViewController: UIViewController {
-    let viewModel = HomeViewModel()
+    var presenter: HomePresenter!
 
-    var characters: [MarvelCharacter] = []
+    var characters = [MarvelCharacter]() {
+        didSet {
+            tableView.reloadData()
+
+            errorLabel.isHidden = true
+            tableView.isHidden = false
+        }
+    }
 
     private enum Constants {
         static let cellIdentifier: String = "characterCell"
-        static let lastColumns = 5
     }
 
     private let tableView: UITableView = {
@@ -37,6 +43,21 @@ public class HomeViewController: UIViewController {
         return label
     }()
 
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        presenter = HomePresenter(view: self)
+    }
+
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        presenter = HomePresenter(view: self)
+    }
+
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
+        presenter = HomePresenter(view: self)
+    }
+
     public override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,11 +67,13 @@ public class HomeViewController: UIViewController {
         view.addSubview(tableView)
 
         configureTableView()
+
+        presenter.viewLoaded()
     }
 
     private func configureTableView() {
-        // tableView.delegate = self
-        // tableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
 
         tableView.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -68,18 +91,6 @@ public class HomeViewController: UIViewController {
             errorLabel.heightAnchor.constraint(equalTo: safeArea.heightAnchor)
         ])
     }
-}
-
-// MARK: VIPER
-
-/*extension HomeViewController: HomeViewProtocol {
-    public func showCharacters(with characters: [Character]) {
-        self.characters = characters
-        tableView.reloadData()
-
-        errorLabel.isHidden = true
-        tableView.isHidden = false
-    }
 
     public func showErrorMessage(with error: String) {
         errorLabel.text = error
@@ -87,11 +98,22 @@ public class HomeViewController: UIViewController {
         errorLabel.isHidden = false
         tableView.isHidden = true
     }
-}*/
+}
 
-// MARK: TableView
+extension HomeViewController: CharactersView {
+    public func updateView(state: CharactersViewState) {
+        switch state {
+        case .add(let characters):
+            self.characters = characters
+        case .update(let characters):
+            self.characters.append(contentsOf: characters)
+        case .error(let errorString):
+            showErrorMessage(with: errorString)
+        }
+    }
+}
 
-/*extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath)
 
@@ -112,8 +134,8 @@ public class HomeViewController: UIViewController {
     }
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == characters.count - Constants.lastColumns {
-            // presenter?.getNextCharacters(characters.count)
+        if indexPath.row == characters.count - presenter.lastColumns {
+            presenter.fetchNextCharacters(offset: characters.count)
         }
     }
-}*/
+}
