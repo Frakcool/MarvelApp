@@ -54,6 +54,18 @@ targets:
             PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.presentation.framework
     dependencies:
       - target: Domain
+      - target: Injector
+  Injector:
+    type: framework
+    platform: iOS
+    deploymentTarget: "14.0"
+    sources: "Frameworks/Injector"
+    settings:
+        base:
+            PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_IDENTIFIER}.injector.framework
+    dependencies:
+      - target: Data
+      - target: Domain
 packages:
   Moya:
     from: "14.0.0"
