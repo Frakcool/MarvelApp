@@ -7,7 +7,6 @@
 
 import Domain
 import Injector
-import UIKit
 
 public class HomePresenter: Presenter {
     private let useCase: CharactersUseCase

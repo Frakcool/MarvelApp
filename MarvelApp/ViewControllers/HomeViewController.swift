@@ -11,6 +11,7 @@ import UIKit
 
 public class HomeViewController: UIViewController {
     var presenter: HomePresenter!
+    var router: HomeRouter!
 
     var characters = [MarvelCharacter]() {
         didSet {
@@ -56,6 +57,7 @@ public class HomeViewController: UIViewController {
     convenience init() {
         self.init(nibName: nil, bundle: nil)
         presenter = HomePresenter(view: self)
+        router = HomeRouter()
     }
 
     public override func viewDidLoad() {
@@ -130,7 +132,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let character = characters[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
-        // presenter?.showCharacterDetail(of: character, from: self)
+        router.goToDetailViewFrom(view: self, with: character)
     }
 
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

@@ -17,9 +17,9 @@ import Domain
 import Moya
 
 public class CharacterProvider: CharactersProviderContract {
-    let provider = MoyaProvider<CharacterService>(plugins: [NetworkLoggerPlugin(configuration: NetworkLoggerPlugin.Configuration(logOptions: .verbose))])
+    // let provider = MoyaProvider<CharacterService>(plugins: [NetworkLoggerPlugin(configuration: NetworkLoggerPlugin.Configuration(logOptions: .verbose))])
 
-    // var provider = MoyaProvider<CharacterService>()
+    var provider = MoyaProvider<CharacterService>()
 
     public init() {
         

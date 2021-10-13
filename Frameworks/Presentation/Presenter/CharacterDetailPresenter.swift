@@ -6,30 +6,48 @@
 //
 
 import Domain
+import Injector
 import UIKit
 
-public class CharacterDetailPresenter/*: CharacterDetailPresenterProtocol */{
-    /*public var interactor: CharacterDetailInputInteractorProtocol?
+public class CharacterDetailPresenter: Presenter {
+    public weak var view: CharacterDetailsView?
 
-    public var view: CharacterDetailViewProtocol?
+    public var character: MarvelCharacter!
 
-    public var router: CharacterDetailRouterProtocol?
+    public var useCase: CharacterDetailsUseCase!
 
-    var character: Character!
-    var image: UIImage?
-
-    public func viewDidLoad() {
-        view?.showCharacterDetails(with: character)
-        interactor?.getImage(for: character)
-    }
-}
-
-extension CharacterDetailPresenter: CharacterDetailOutputInteractorProtocol {
-    public func characterImageDidFetch(image: UIImage) {
-        view?.showCharacterImage(with: image)
+    public func viewLoaded() {
+        view?.updateView(state: .success(character))
+        loadImage()
     }
 
-    public func displayErrorMessage(error: String) {
-        view?.showErrorMessage(with: error)
-    }*/
+    public convenience init(view: CharacterDetailsView, character: MarvelCharacter) {
+        self.init(view: view, character: character, charactersUseCase: Injector.characterDetailsUseCase)
+    }
+
+    init(view: CharacterDetailsView, character: MarvelCharacter, charactersUseCase: CharacterDetailsUseCase) {
+        self.view = view
+        self.character = character
+        self.useCase = charactersUseCase
+    }
+
+    private func loadImage() {
+        useCase.imageData(url: buildURL(for: character)) { result in
+            switch result {
+            case let .success(data):
+                self.view?.updateImage(data: data)
+            case let .failure(error):
+                print(error)
+                break
+            }
+        }
+    }
+
+    private func buildURL(for character: MarvelCharacter) -> String {
+        let path = character.thumbnail.path
+        let ext = character.thumbnail.type
+        let size = ImageSizes.amazing.name
+
+        return path + "/" + size + "." + ext
+    }
 }

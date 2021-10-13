@@ -12,4 +12,8 @@ public final class Injector {
     public static var charactersUseCase: CharactersUseCase {
         CharactersUseCase(CharacterProvider())
     }
+
+    public static var characterDetailsUseCase: CharacterDetailsUseCase {
+        CharacterDetailsUseCase(CharacterDetailsProvider())
+    }
 }

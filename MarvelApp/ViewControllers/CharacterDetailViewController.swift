@@ -7,16 +7,15 @@
 
 import Domain
 import UIKit
+import Presentation
 
 public class CharacterDetailViewController: UIViewController {
-    /*var characterImage = UIImageView()
+    var characterImage = UIImageView()
     var nameLabel = UILabel()
     var descriptionLabel = UILabel()
     var copyrightLabel = UILabel()
 
-    var character: Character!
-
-    public var presenter: CharacterDetailPresenterProtocol?
+    var presenter: CharacterDetailPresenter!
 
     private enum Constants {
         static let positiveMargin = CGFloat(20)
@@ -30,7 +29,7 @@ public class CharacterDetailViewController: UIViewController {
 
         view.backgroundColor = .white
         addComponents()
-        presenter?.viewDidLoad()
+        presenter.viewLoaded()
     }
 
     private func addComponents() {
@@ -74,20 +73,32 @@ public class CharacterDetailViewController: UIViewController {
                                                    constant: Constants.negativeMargin)
         ])
     }
-}
-
-extension CharacterDetailViewController: CharacterDetailViewProtocol {
-    public func showCharacterDetails(with character: Character) {
-        if let characterDescription = character.description {
-            let desc = characterDescription.isEmpty ? Constants.noDescription : characterDescription
-            descriptionLabel.text = desc
-            copyrightLabel.text = Constants.copyright
-            nameLabel.text = character.name
-        }
-    }
 
     public func showCharacterImage(with image: UIImage) {
         characterImage.image = image
+    }
+}
+
+extension CharacterDetailViewController: CharacterDetailsView {
+    public func updateView(state: CharacterViewState) {
+        switch state {
+        case .success(let marvelCharacter):
+            showCharacterDetails(character: marvelCharacter)
+        case .error(let errorText):
+            showErrorMessage(with: errorText)
+        }
+    }
+
+    func showCharacterDetails(character: MarvelCharacter) {
+        let desc = character.characterDescription.isEmpty ? Constants.noDescription : character.characterDescription
+
+        descriptionLabel.text = desc
+        copyrightLabel.text = Constants.copyright
+        nameLabel.text = character.name
+    }
+
+    public func updateImage(data: Data) {
+        characterImage.image = UIImage(data: data)
     }
 
     public func showErrorMessage(with error: String) {
@@ -108,6 +119,5 @@ extension CharacterDetailViewController: CharacterDetailViewProtocol {
             }
         }))
         self.present(alert, animated: true, completion: nil)
-    }*/
+    }
 }
-
