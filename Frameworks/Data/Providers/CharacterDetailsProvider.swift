@@ -17,13 +17,15 @@ public class CharacterDetailsProvider: CharacterDetailsProviderContract {
 
     }
 
-    public func imageData(url: String, completion: @escaping CharacterImageCompletion) {
+    public func imageData(character: MarvelCharacter, completion: @escaping CharacterImageCompletion) {
+        let url = buildURL(for: character)
+
         provider.request(.fetchThumbnail(urlString: url)) { result in
             switch result {
             case let .success(response):
                 do {
                     let filteredResponse = try response.filterSuccessfulStatusCodes()
-                    let marvelResponse = try filteredResponse.data
+                    let marvelResponse = filteredResponse.data
                     completion(.success(marvelResponse))
                 } catch {
                     completion(.failure(MarvelError.invalidFormat))
@@ -40,5 +42,13 @@ public class CharacterDetailsProvider: CharacterDetailsProviderContract {
                         description: character.description ?? "",
                         thumbnail: Thumbnail(path: character.thumbnail?.path ?? "",
                                              type: character.thumbnail?.type ?? ""))
+    }
+
+    private func buildURL(for character: MarvelCharacter) -> String {
+        let path = character.thumbnail.path
+        let ext = character.thumbnail.type
+        let size = ImageSizes.amazing.name
+
+        return path + "/" + size + "." + ext
     }
 }

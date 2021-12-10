@@ -18,7 +18,7 @@ public class CharacterDetailPresenter: Presenter {
 
     public func viewLoaded() {
         view?.updateView(state: .success(character))
-        loadImage()
+        loadImage(for: character)
     }
 
     public convenience init(view: CharacterDetailsView, character: MarvelCharacter) {
@@ -31,8 +31,8 @@ public class CharacterDetailPresenter: Presenter {
         self.useCase = charactersUseCase
     }
 
-    private func loadImage() {
-        useCase.imageData(url: buildURL(for: character)) { result in
+    private func loadImage(for character: MarvelCharacter) {
+        useCase.imageData(character: character) { result in
             switch result {
             case let .success(data):
                 self.view?.updateImage(data: data)
@@ -41,13 +41,5 @@ public class CharacterDetailPresenter: Presenter {
                 break
             }
         }
-    }
-
-    private func buildURL(for character: MarvelCharacter) -> String {
-        let path = character.thumbnail.path
-        let ext = character.thumbnail.type
-        let size = ImageSizes.amazing.name
-
-        return path + "/" + size + "." + ext
     }
 }

@@ -7,11 +7,11 @@
 
 import Foundation
 
-@objc public class MarvelCharacter: NSObject {
-    @objc public let id: Int
-    @objc public let name: String
-    @objc public let characterDescription: String
-    @objc public let thumbnail: Thumbnail
+public struct MarvelCharacter {
+    public let id: Int
+    public let name: String
+    public let characterDescription: String
+    public let thumbnail: Thumbnail
 
     public init(id: Int, name: String, description: String, thumbnail: Thumbnail) {
         self.id = id
@@ -21,9 +21,9 @@ import Foundation
     }
 }
 
-@objc public class Thumbnail: NSObject {
-    @objc public let path: String
-    @objc public let type: String
+public struct Thumbnail {
+    public let path: String
+    public let type: String
 
     public init(path: String, type: String) {
         self.path = path

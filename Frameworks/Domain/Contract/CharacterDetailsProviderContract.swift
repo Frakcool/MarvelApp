@@ -10,5 +10,5 @@ import Foundation
 public typealias CharacterImageCompletion = (_ result: Result<Data, MarvelError>) -> Void
 
 public protocol CharacterDetailsProviderContract {
-    func imageData(url: String, completion: @escaping CharacterImageCompletion)
+    func imageData(character: MarvelCharacter, completion: @escaping CharacterImageCompletion)
 }
